@@ -9,7 +9,7 @@ content:
     type: file
     path: _home.yml
     fields:
-      - name: title
+      - name: home
         label: Website title
         type: string
       - name: description

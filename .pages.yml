@@ -1,11 +1,8 @@
-nav:
-  - Overview: overview
-  - Getting started: getting_started
-  - Developer Guides: developer_guides
-  - API Reference: api
-  - FAQs: faqs
-  - Contributing: contributing
-  - Release notes: https://github.com/aws/aws-pdk/releases
+content:
+  - name: home
+    label: Home
+    type: global
+    path: _home
 media:
   input: public/assets
   output: /assets

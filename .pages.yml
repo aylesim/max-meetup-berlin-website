@@ -2,7 +2,14 @@ content:
   - name: home
     label: Home
     type: file
-    path: _home
+    path: _home.yml
+    fields:
+      - name: title
+        label: Website title
+        type: string
+      - name: description
+        label: Website description
+        type: string
 media:
   input: public/assets
   output: /assets

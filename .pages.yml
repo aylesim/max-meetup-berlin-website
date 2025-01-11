@@ -1,3 +1,8 @@
+
+media:
+  input: public/assets
+  output: /assets
+  categories: [ "image" ]
 content:
   - name: home
     label: Home
@@ -10,11 +15,6 @@ content:
       - name: description
         label: Website description
         type: string
-media:
-  input: public/assets
-  output: /assets
-  categories: [ "image" ]
-content:
   - name: posts
     label: Posts
     type: collection

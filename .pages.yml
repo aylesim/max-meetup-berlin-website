@@ -1,3 +1,11 @@
+nav:
+  - Overview: overview
+  - Getting started: getting_started
+  - Developer Guides: developer_guides
+  - API Reference: api
+  - FAQs: faqs
+  - Contributing: contributing
+  - Release notes: https://github.com/aws/aws-pdk/releases
 media:
   input: public/assets
   output: /assets

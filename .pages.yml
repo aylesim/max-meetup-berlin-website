@@ -1,7 +1,7 @@
 content:
   - name: home
     label: Home
-    type: global
+    type: file
     path: _home
 media:
   input: public/assets

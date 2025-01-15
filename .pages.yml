@@ -13,30 +13,31 @@ content:
         label: Title
         type: string
       - name: subtitle
-        label: Sescription
+        label: Subtitle
         type: string
       - name: description
         label: Description
         type: string
       - name: next_meetup_0
-        label: Next meetup
+        label: Next meetup header
         type: string  
       - name: next_meetup_1
-        label: Next meetup
+        label: Next meetup line 1
         type: string  
       - name: next_meetup_2
-        label: Next meetup
+        label: Next meetup line 2
         type: string  
       - name: next_meetup_3
-        label: Next meetup
-        type: string  
-      - name: mail_button
-        label: Mail button
+        label: Next meetup line 3
         type: string  
       - name: isFlashy
         label: Flashy
         type: boolean
         default: true
+      - name: mail_button
+        label: Mail button
+        type: string  
+
   - name: posts
     label: Posts
     type: collection

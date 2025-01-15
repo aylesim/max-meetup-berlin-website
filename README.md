@@ -12,8 +12,9 @@ The website is built using:
 ## 🎧 About Max Berlin
 The Max Berlin Network is dedicated to exploring the creative possibilities of Max/MSP. This is a space to connect with like-minded people. Everyone, from beginners to advanced users, is welcome.
 
-## ❤️ Made in Berlin
-This project is built by and for the Max/MSP community in Berlin. 
-
 ## 💌 Newsletter
 Sign up for our newsletter to stay updated on upcoming meetups, open calls, and more: [Max Berlin Meetup](https://www.maxberlin.meetup)
+
+--------------
+
+Made with ❤️ from Berlin

@@ -20,7 +20,8 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

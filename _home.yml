@@ -1,2 +1,11 @@
-home: MAXMSP BERLIN MEETUP
-description: Coming soon!
+title: MAXMSP BERLIN NETWORK
+subtitle: Coming soon!
+description: An evening of interactive audio-visual experiences and cutting-edge music technology
+next_meetup_0: Next meetup
+next_meetup_2: 
+next_meetup_3:
+mail_button: Get Notified!
+- name: isFlashy
+  label: Flashy
+  type: boolean
+  default: true

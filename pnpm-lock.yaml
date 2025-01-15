@@ -53,6 +53,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      yaml:
+        specifier: ^2.7.0
+        version: 2.7.0
     devDependencies:
       '@types/js-yaml':
         specifier: ^4.0.9

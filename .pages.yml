@@ -9,12 +9,34 @@ content:
     type: file
     path: _home.yml
     fields:
-      - name: home
-        label: Website title
+      - name: title
+        label: Title
+        type: string
+      - name: subtitle
+        label: Sescription
         type: string
       - name: description
-        label: Website description
+        label: Description
         type: string
+      - name: next_meetup_0
+        label: Next meetup
+        type: string  
+      - name: next_meetup_1
+        label: Next meetup
+        type: string  
+      - name: next_meetup_2
+        label: Next meetup
+        type: string  
+      - name: next_meetup_3
+        label: Next meetup
+        type: string  
+      - name: mail_button
+        label: Mail button
+        type: string  
+      - name: isFlashy
+        label: Flashy
+        type: boolean
+        default: true
   - name: posts
     label: Posts
     type: collection

@@ -71,7 +71,7 @@ export default function Hero({ data }: { data: any }) {
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
           {data.title}
           </h1>
-          <div className="text-2xl md:text-3xl font-mono transform rotate-1">
+          <div className="text-3xl md:text-[1.5rem] font-mono transform rotate-1">
           {data.subtitle}
           </div>
         </div>

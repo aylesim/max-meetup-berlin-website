@@ -5,8 +5,4 @@ next_meetup_0: Next meetup
 next_meetup_2: 
 next_meetup_3:
 mail_button: Get Notified!
-fields:
-- name: isFlashy
-  label: Flashy
-  type: boolean
-  default: true
+flashy: true

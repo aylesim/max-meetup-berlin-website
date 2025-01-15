@@ -4,8 +4,44 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
+const Arrow = ({ angle, delay }: { angle: number, delay: number }) => (
+  <motion.div
+    className="absolute w-8 h-8 opacity-50"
+    style={{
+      transformOrigin: "center",
+      rotate: `${angle}deg`
+    }}
+    initial={{ 
+      scale: 0,
+      opacity: 0,
+      x: `${Math.cos((angle - 90) * Math.PI / 180) * 500}px`,
+      y: `${Math.sin((angle - 90) * Math.PI / 180) * 500}px`
+    }}
+    animate={{ 
+      scale: [0, 1, 0],
+      opacity: [0, 0.5, 0],
+      x: 0,
+      y: 0
+    }}
+    transition={{
+      duration: 2,
+      delay: delay,
+      repeat: Infinity,
+      ease: "easeOut"
+    }}
+  >
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="currentColor"/>
+    </svg>
+  </motion.div>
+);
+
 export default function Hero({ data }: { data: any }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const arrows = Array.from({ length: 8 }, (_, i) => ({
+    angle: i * 45,
+    delay: i * 0.2
+  }))
 
   
 
@@ -50,16 +86,26 @@ export default function Hero({ data }: { data: any }) {
             </Button>
           </div>
           
-          <div className="flex-1 border-t-4 border-black pt-4 transform -rotate-1">
+          <motion.div 
+            className="flex-1 border-t-4 border-black pt-4 transform -rotate-1 relative"
+          >
             <div className="text-5xl font-bold mb-2 uppercase tracking-tight">{data.next_meetup_0}</div>
-            <div className="font-mono">
+            <div className="font-mono mb-6">
               {data.next_meetup_1}
               <br />
               {data.next_meetup_2}
               <br />
               {data.next_meetup_3}
             </div>
-          </div>
+            <div className="relative">
+              {data.isFlashy && arrows.map((arrow, i) => (
+                <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
+              ))}
+              <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-8deg] transition-transform hover:rotate-0">
+                More info
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
 

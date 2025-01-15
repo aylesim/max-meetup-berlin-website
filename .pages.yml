@@ -50,12 +50,66 @@ content:
       - { name: description, label: Description, type: string}
       - { name: when_where, label: When & Where, type: string}
       - { name: schedule, label: Schedule, type: string}
-      - name: Speaker
-        label: Speaker
+      - name: Speaker_0
+        label: Speaker_0
         type: object
         fields:
-          - { name: name, label: Name, type: string }
-          - { name: picture, label: Picture, type: image }
-          - { name: bio, label: Bio, type: string }
-          - { name: link1, label: Link 1, type: string }
-          - { name: link2, label: Link 2, type: string }
+          - { name: name_0, label: Name, type: string }
+          - { name: picture_0, label: Picture, type: image }
+          - { name: bio_0, label: Bio, type: string }
+          - { name: link1_0, label: Link 1, type: string }
+          - { name: link2_0, label: Link 2, type: string }
+      - name: Speaker_1
+        label: Speaker_1
+        type: object
+        fields:
+          - { name: name_1, label: Name, type: string }
+          - { name: picture_1, label: Picture, type: image }
+          - { name: bio_1, label: Bio, type: string }
+          - { name: link1_1, label: Link 1, type: string }
+          - { name: link2_1, label: Link 2, type: string }
+      - name: Speaker_2
+        label: Speaker_2
+        type: object
+        fields:
+          - { name: name_2, label: Name, type: string }
+          - { name: picture_2, label: Picture, type: image }
+          - { name: bio_2, label: Bio, type: string }
+          - { name: link1_2, label: Link 1, type: string }
+          - { name: link2_2, label: Link 2, type: string }
+      - name: Speaker_3
+        label: Speaker_3
+        type: object
+        fields:
+          - { name: name_3, label: Name, type: string }
+          - { name: picture_3, label: Picture, type: image }
+          - { name: bio_3, label: Bio, type: string }
+          - { name: link1_3, label: Link 1, type: string }
+          - { name: link2_3, label: Link 2, type: string }    
+      - name: Speaker_4
+        label: Speaker_4
+        type: object
+        fields:
+          - { name: name_4, label: Name, type: string }
+          - { name: picture_4, label: Picture, type: image }
+          - { name: bio_4, label: Bio, type: string }
+          - { name: link1_4, label: Link 1, type: string }
+          - { name: link2_4, label: Link 2, type: string }
+      - name: Speaker_5
+        label: Speaker_5
+        type: object
+        fields:
+          - { name: name_5, label: Name, type: string }
+          - { name: picture_5, label: Picture, type: image }
+          - { name: bio_5, label: Bio, type: string }
+          - { name: link1_5, label: Link 1, type: string }
+          - { name: link2_5, label: Link 2, type: string }
+      - name: Speaker_6
+        label: Speaker_6
+        type: object
+        fields:
+          - { name: name_6, label: Name, type: string }
+          - { name: picture_6, label: Picture, type: image }
+          - { name: bio_6, label: Bio, type: string }
+          - { name: link1_6, label: Link 1, type: string }
+          - { name: link2_6, label: Link 2, type: string }

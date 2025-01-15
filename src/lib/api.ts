@@ -2,8 +2,10 @@ import { Post } from "@/interfaces/post";
 import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
+import yaml from 'js-yaml';
 
 const postsDirectory = join(process.cwd(), "_posts");
+const homeFile = join(process.cwd(), "_home.yml");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
@@ -25,4 +27,9 @@ export function getAllPosts(): Post[] {
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
+}
+
+export function getHomeData() {
+  const fileContents = fs.readFileSync(homeFile, 'utf8');
+  return yaml.load(fileContents) as any;
 }

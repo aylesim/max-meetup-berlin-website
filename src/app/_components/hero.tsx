@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 const Arrow = ({ angle, delay }: { angle: number, delay: number }) => (
   <motion.div
@@ -101,9 +102,11 @@ export default function Hero({ data }: { data: any }) {
               {data.isFlashy && arrows.map((arrow, i) => (
                 <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
               ))}
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-8deg] transition-transform hover:rotate-0">
-                More info
-              </Button>
+              <Link href="/meeting">
+                <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-8deg] transition-transform hover:rotate-0">
+                  More info
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>

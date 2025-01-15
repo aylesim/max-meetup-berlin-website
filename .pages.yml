@@ -38,26 +38,24 @@ content:
         label: Mail button
         type: string  
 
-  - name: posts
-    label: Posts
+  - name: _meetups
+    label: Meetups
     type: collection
-    path: _posts
+    path: _meetups
     view:
-      fields: [ coverImage, title, date ]
+      fields: [ title ]
     fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: excerpt, label: Excerpt, type: string }
-      - { name: coverImage, label: Cover image, type: image }
-      - { name: date, label: Date, type: date, options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" } }
-      - name: author
-        label: Author
+      - { name: title, label: Title, type: string}
+      - { name: subtitle, label: Subtitle, type: string}
+      - { name: description, label: Description, type: string}
+      - { name: when_where, label: When & Where, type: string}
+      - { name: schedule, label: Schedule, type: string}
+      - name: Speaker
+        label: Speaker
         type: object
         fields:
           - { name: name, label: Name, type: string }
           - { name: picture, label: Picture, type: image }
-      - name: ogImage
-        label: Image (social sharing)
-        type: object
-        fields:
-          - { name: url, label: URL, type: image }
-      - { name: body, label: Body, type: rich-text }
+          - { name: bio, label: Bio, type: string }
+          - { name: link1, label: Link 1, type: string }
+          - { name: link2, label: Link 2, type: string }

@@ -5,10 +5,10 @@ We’re a community of Max/MSP enthusiasts in Berlin – from audio programmers 
 ### 🛠️ Tech Stack
 The website is built using:
 
-- 🚀 Next.js – For a fast and responsive web experience.
-- 📄 PageCMS – Simplifying content management.
-- 🖌️ Tailwind CSS – Providing a clean, modern design system.
-
+- 🚀 Next.js
+- 📄 PageCMS
+- 🖌️ Tailwind CSS
+  
 ## 🎧 About Max Berlin
 The Max Berlin Network is dedicated to exploring the creative possibilities of Max/MSP. This is a space to connect with like-minded people. Everyone, from beginners to advanced users, is welcome.
 

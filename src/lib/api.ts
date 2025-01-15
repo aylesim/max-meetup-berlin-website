@@ -1,35 +1,31 @@
-import { Post } from "@/interfaces/post";
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
 import yaml from 'js-yaml';
+import { join } from "path";
+import fs from "fs";
 
-const postsDirectory = join(process.cwd(), "_posts");
 const homeFile = join(process.cwd(), "_home.yml");
-
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
-}
-
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return { ...data, slug: realSlug, content } as Post;
-}
-
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
-}
+const meetupsDirectory = join(process.cwd(), "_meetups");
 
 export function getHomeData() {
   const fileContents = fs.readFileSync(homeFile, 'utf8');
   return yaml.load(fileContents) as any;
+}
+
+export function getMeetupBySlug(slug: string) {
+  const fullPath = join(meetupsDirectory, `${slug}.yml`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return yaml.load(fileContents) as any;
+}
+
+export function getAllMeetups() {
+  const slugs = fs.readdirSync(meetupsDirectory);
+  const meetups = slugs
+    .filter(slug => slug.endsWith('.yml'))
+    .map(slug => {
+      const meetupData = getMeetupBySlug(slug.replace(/\.yml$/, ''));
+      return {
+        ...meetupData,
+        slug: slug.replace(/\.yml$/, '')
+      };
+    });
+  return meetups;
 }

@@ -9,6 +9,7 @@ type MeetingData = {
   description: string
   when_where: string
   schedule: string
+  what_to_expect: string
   Speaker_0: {
     name_0: string
     picture_0: string

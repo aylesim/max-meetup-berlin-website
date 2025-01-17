@@ -45,7 +45,7 @@ content:
     view:
       fields: [ title ]
     fields:
-      - { name: title, label: Title, type: string}
+      - { name: title, label: Title, type: string}w
       - { name: subtitle, label: Subtitle, type: string}
       - { name: description, label: Description, type: string}
       - { name: when_where, label: When & Where, type: string}

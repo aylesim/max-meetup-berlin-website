@@ -3,8 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import DateFormatter from './date-formatter'
-import Container from './container'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -14,6 +12,7 @@ type MeetingData = {
   description: string
   when_where: string
   schedule: string
+  what_to_expect: string
   Speaker_0: {
     name_0: string
     picture_0: string
@@ -86,7 +85,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         >
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">What to Expect</h2>
           <div className="text-lg font-mono space-y-4">
-            <p className="whitespace-pre-wrap">Join us for an engaging session where you'll have the opportunity to learn from industry experts, network with peers, and gain insights into the latest trends and technologies. Expect interactive discussions, hands-on activities, and much more!</p>
+            <p className="whitespace-pre-wrap">{data.what_to_expect}</p>
           </div>
         </motion.div>
 

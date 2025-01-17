@@ -50,6 +50,7 @@ content:
       - { name: description, label: Description, type: string}
       - { name: when_where, label: When & Where, type: string}
       - { name: schedule, label: Schedule, type: string}
+      - { name: what_to_expect, label: What to expect, type: text}
       - name: Speaker_0
         label: Speaker_0
         type: object

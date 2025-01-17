@@ -11,6 +11,7 @@ type MeetingData = {
   schedule: string
   Speaker_0: {
     name_0: string
+    picture_0: string
     bio_0: string
     link1_0: string
     link2_0: string

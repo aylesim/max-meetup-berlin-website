@@ -16,6 +16,7 @@ type MeetingData = {
   schedule: string
   Speaker_0: {
     name_0: string
+    picture_0: string
     bio_0: string
     link1_0: string
     link2_0: string
@@ -24,7 +25,7 @@ type MeetingData = {
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
       
       <motion.div 
@@ -76,6 +77,19 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
           </motion.div>
         </div>
 
+        {/* What to Expect Section */}
+        <motion.div 
+          className="mt-16 border-t-4 border-black pt-8 transform rotate-1"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">What to Expect</h2>
+          <div className="text-lg font-mono space-y-4">
+            <p className="whitespace-pre-wrap">Join us for an engaging session where you'll have the opportunity to learn from industry experts, network with peers, and gain insights into the latest trends and technologies. Expect interactive discussions, hands-on activities, and much more!</p>
+          </div>
+        </motion.div>
+
         {/* People Section */}
         <motion.div 
           className="mt-16"
@@ -91,6 +105,14 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
+              <Image 
+                src={data.Speaker_0.picture_0} // Added image rendering
+                alt={data.Speaker_0.name_0}
+                layout="responsive"
+                width={200}
+                height={200}
+                className="mb-4 w-full" // Updated styling for full width
+              />
               <h3 className="text-2xl font-bold mb-2">{data.Speaker_0.name_0}</h3>
               <p className="font-mono text-lg mb-4">{data.Speaker_0.bio_0}</p>
               <div className="flex gap-4">

@@ -3,26 +3,37 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type MeetingData = {
-  title: string
-  subtitle: string
-  description: string
-  when_where: string
-  schedule: string
-  Speaker_0: {
-    name_0: string
-    bio_0: string
-    link1_0: string
-    link2_0: string
+    title: string
+    subtitle: string
+    description: string
+    when_where: string
+    schedule: string
+    Speaker_0: {
+      name_0: string
+      picture_0: string
+      bio_0: string
+      link1_0: string
+      link2_0: string
+    }
   }
-}
 
 export default function SquarePosterContent({ data }: { data: MeetingData }) {
   return (
     <div className="w-[1080px] h-[1080px] relative bg-white text-black overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
+      
+      {/* Speaker Image */}
+      <Image 
+        src={data.Speaker_0.picture_0} 
+        alt={data.Speaker_0.name_0} 
+        layout="fill" 
+        objectFit="cover" 
+        className="absolute inset-0 z-0" 
+      />
       
       {/* Content Container */}
       <div className="relative z-10 w-full h-full p-12 flex flex-col">

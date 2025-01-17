@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Script from 'next/script'
 
 const Arrow = ({ angle, delay }: { angle: number, delay: number }) => (
   <motion.div
@@ -91,7 +92,7 @@ export default function Hero({ data }: { data: any }) {
                 <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
               ))}
               <Link href="/meeting">
-                <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-8deg] transition-transform hover:rotate-0">
+                <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0">
                   More info
                 </Button>
               </Link>
@@ -100,23 +101,30 @@ export default function Hero({ data }: { data: any }) {
 
           
 
+<div className='flex-1'>
 
+          <div className=" border-l-4 border-b-4 border-black pl-4 transform rotate-1">
 
-          <div className="flex-1 border-l-4 border-black pl-4 transform rotate-1">
           <div className="text-xl font-bold mb-2 uppercase tracking-tight">Newsletter</div>
             <p className="text-base md:text-base mb-4 font-mono">
             {data.description}
             </p>
-            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0">
               {data.mail_button}
             </Button>
+
+            <Script src="https://eocampaign1.com/form/308349b2-d4f8-11ef-bbca-fb599e28767b.js" data-form="308349b2-d4f8-11ef-bbca-fb599e28767b"></Script>
           </div>
-
-
           
-       
-        </div>
+          <div className="flex justify-end">
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0 mt-4">
+              About
+            </Button>
+          </div>
+          </div>
+          </div>
         
+
       </motion.div>
 
       <div 

@@ -8,7 +8,21 @@ import Container from './container'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function MeetingInfo({ data }: { data: any }) {
+type MeetingData = {
+  title: string
+  subtitle: string
+  description: string
+  when_where: string
+  schedule: string
+  Speaker_0: {
+    name_0: string
+    bio_0: string
+    link1_0: string
+    link2_0: string
+  }
+}
+
+export default function MeetingInfo({ data }: { data: MeetingData }) {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
@@ -39,9 +53,7 @@ export default function MeetingInfo({ data }: { data: any }) {
           >
             <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">When & Where</h2>
             <div className="font-mono space-y-2">
-              <p className="text-xl">{data.date}</p>
-              <p className="text-xl">{data.location}</p>
-              <p className="text-xl">{data.time}</p>
+              <div className="text-xl whitespace-pre-wrap">{data.when_where}</div>
             </div>
             <div className="mt-6">
               <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
@@ -59,12 +71,7 @@ export default function MeetingInfo({ data }: { data: any }) {
           >
             <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">Schedule</h2>
             <div className="font-mono space-y-4">
-              {data.schedule.map((item: any, index: number) => (
-                <div key={index}>
-                  <p className="text-xl font-bold">{item.time}</p>
-                  <p className="text-lg">{item.description}</p>
-                </div>
-              ))}
+              <div className="text-lg whitespace-pre-wrap">{data.schedule}</div>
             </div>
           </motion.div>
         </div>
@@ -78,42 +85,31 @@ export default function MeetingInfo({ data }: { data: any }) {
         >
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">Featured Speakers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {data.people.map((person: any, index: number) => (
-              <motion.div
-                key={index}
-                className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 * index }}
-              >
-                <div className="relative w-full aspect-square mb-4 overflow-hidden">
-                  <Image
-                    src={person.picture}
-                    alt={person.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{person.name}</h3>
-                <p className="font-mono text-lg mb-4">{person.bio}</p>
-                <div className="flex gap-4">
-                  <Link 
-                    href={person.link1}
-                    target="_blank"
-                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                  >
-                    Link 1
-                  </Link>
-                  <Link 
-                    href={person.link2}
-                    target="_blank"
-                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                  >
-                    Link 2
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+            <motion.div
+              className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-bold mb-2">{data.Speaker_0.name_0}</h3>
+              <p className="font-mono text-lg mb-4">{data.Speaker_0.bio_0}</p>
+              <div className="flex gap-4">
+                <Link 
+                  href={data.Speaker_0.link1_0}
+                  target="_blank"
+                  className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                >
+                  Link 1
+                </Link>
+                <Link 
+                  href={data.Speaker_0.link2_0}
+                  target="_blank"
+                  className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                >
+                  Link 2
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>

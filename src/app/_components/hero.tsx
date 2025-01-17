@@ -72,25 +72,17 @@ export default function Hero({ data }: { data: any }) {
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
           {data.title}
           </h1>
-          <div className="text-xl md:text-[1.5rem] font-mono transform rotate-1">
+          <div className="text-xl md:text-[1.3rem] font-mono transform rotate-1">
           {data.subtitle}
           </div>
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="flex-1 basis-2/6 border-l-4 border-black pl-4 transform rotate-1">
-            <p className="text-base md:text-base mb-4 font-mono">
-            {data.description}
-            </p>
-            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
-              {data.mail_button}
-            </Button>
-          </div>
-          
-          <motion.div 
-            className="flex-1 border-t-4 border-black pt-4 transform -rotate-1 relative"
+             
+        <motion.div 
+            className="flex-1 border-white  transform -rotate-1 relative"
           >
-            <div className="text-5xl font-bold mb-2 uppercase tracking-tight">{data.next_meetup_0}</div>
+            <div className="text-6xl font-bold mb-2 uppercase tracking-tight">{data.next_meetup_0}</div>
             <div className="font-mono mb-6">
               {data.next_meetup}
             </div>
@@ -105,7 +97,26 @@ export default function Hero({ data }: { data: any }) {
               </Link>
             </div>
           </motion.div>
+
+          
+
+
+
+          <div className="flex-1 border-l-4 border-black pl-4 transform rotate-1">
+          <div className="text-xl font-bold mb-2 uppercase tracking-tight">Newsletter</div>
+            <p className="text-base md:text-base mb-4 font-mono">
+            {data.description}
+            </p>
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
+              {data.mail_button}
+            </Button>
+          </div>
+
+
+          
+       
         </div>
+        
       </motion.div>
 
       <div 

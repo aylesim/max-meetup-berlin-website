@@ -39,9 +39,9 @@ export default function MeetingInfo({ data }: { data: any }) {
           >
             <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">When & Where</h2>
             <div className="font-mono space-y-2">
-              <p className="text-xl">{data.when_where.date}</p>
-              <p className="text-xl">{data.when_where.location}</p>
-              <p className="text-xl">{data.when_where.time}</p>
+              <p className="text-xl">{data.date}</p>
+              <p className="text-xl">{data.location}</p>
+              <p className="text-xl">{data.time}</p>
             </div>
             <div className="mt-6">
               <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">

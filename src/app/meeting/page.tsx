@@ -6,7 +6,7 @@ export default async function MeetingPage() {
   
   return (
     <main>
-      <MeetingInfo data={data} />
+      {/* <MeetingInfo data={data} /> */}
     </main>
   )
 } 

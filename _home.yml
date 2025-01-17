@@ -1,15 +1,18 @@
 title: MAX BERLIN NETWORK
 subtitle: An opportunity to connect, learn, teach, and patch together
-description: Max meetups are back in Berlin! Whether you're a seasoned Max user
-  or a curious beginner, join our monthly gatherings to share patches, ideas,
-  and inspirations. Hosted at Betahaus in Mitte, these events are open to
-  all—creative coders, sound engineers, music producers, visual artists, you
-  name it. Subscribe to our newsletter and follow us to stay updated and RSVP
-  for upcoming meetups.  January 2025 Max Berlin Network – Massi, Ale, Riccardo,
-  Edu
+description: >-
+  Max meetups are back in Berlin! Whether you're a seasoned Max user or a
+  curious beginner, join our monthly gatherings to share patches, ideas, and
+  inspirations. 
+
+
+  Hosted at Betahaus in Mitte, these events are open to all—creative coders,
+  sound engineers, music producers, visual artists, you name it. Subscribe to
+  our newsletter and follow us to stay updated and RSVP for upcoming meetups.  
 next_meetup_0: Next meetup
-next_meetup_1: Saturday, February the 15th 2025
-next_meetup_2: Betahaus, Rudi-Dutschke-Straße 23, 10969 Berlin
-next_meetup_3: 1:00 PM - 8:00 PM
+next_meetup: |-
+  Saturday, February the 15th 2025
+  Betahaus, Rudi-Dutschke-Straße 23, 10969 Berlin
+  1:00 PM - 8:00 PM
 isFlashy: true
 mail_button: Get Notified!

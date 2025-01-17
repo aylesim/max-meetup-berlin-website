@@ -17,19 +17,13 @@ content:
         type: string
       - name: description
         label: Description
-        type: string
+        type: text
       - name: next_meetup_0
         label: Next meetup header
         type: string  
-      - name: next_meetup_1
-        label: Next meetup line 1
-        type: string  
-      - name: next_meetup_2
-        label: Next meetup line 2
-        type: string  
-      - name: next_meetup_3
-        label: Next meetup line 3
-        type: string  
+      - name: next_meetup
+        label: Next meetup
+        type: text
       - name: isFlashy
         label: Flashy
         type: boolean

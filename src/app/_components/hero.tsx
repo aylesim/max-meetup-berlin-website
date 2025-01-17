@@ -59,7 +59,7 @@ export default function Hero({ data }: { data: any }) {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 py-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
       
       <motion.div 
@@ -72,14 +72,14 @@ export default function Hero({ data }: { data: any }) {
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
           {data.title}
           </h1>
-          <div className="text-3xl md:text-[1.5rem] font-mono transform rotate-1">
+          <div className="text-xl md:text-[1.5rem] font-mono transform rotate-1">
           {data.subtitle}
           </div>
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="flex-1 border-l-4 border-black pl-4 transform rotate-1">
-            <p className="text-xl md:text-2xl mb-4 font-mono">
+          <div className="flex-1 basis-2/6 border-l-4 border-black pl-4 transform rotate-1">
+            <p className="text-base md:text-base mb-4 font-mono">
             {data.description}
             </p>
             <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
@@ -92,11 +92,7 @@ export default function Hero({ data }: { data: any }) {
           >
             <div className="text-5xl font-bold mb-2 uppercase tracking-tight">{data.next_meetup_0}</div>
             <div className="font-mono mb-6">
-              {data.next_meetup_1}
-              <br />
-              {data.next_meetup_2}
-              <br />
-              {data.next_meetup_3}
+              {data.next_meetup}
             </div>
             <div className="relative">
               {data.isFlashy && arrows.map((arrow, i) => (

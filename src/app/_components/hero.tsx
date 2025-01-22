@@ -124,12 +124,14 @@ export default function Hero({ data }: { data: any }) {
             </div>
 
             <div className="flex justify-end">
-              <Button
-                size="lg"
-                className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0 mt-4"
-              >
-                About
-              </Button>
+              <Link href="/about">
+                <Button
+                  size="lg"
+                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0 mt-4"
+                >
+                  About
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

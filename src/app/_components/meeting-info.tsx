@@ -3,10 +3,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import DateFormatter from "./date-formatter";
 
 import Image from "next/image";
 import Link from "next/link";
+
+type SpeakerIndex = 0 | 1 | 2 | 3 | 4 | 5;
+
+type Speaker = {
+  [K in SpeakerIndex as `name_${K}`]?: string;
+} & {
+  [K in SpeakerIndex as `picture_${K}`]?: string;
+} & {
+  [K in SpeakerIndex as `bio_${K}`]?: string;
+} & {
+  [K in SpeakerIndex as `link1_${K}`]?: string;
+} & {
+  [K in SpeakerIndex as `link2_${K}`]?: string;
+};
 
 type MeetingData = {
   title: string;
@@ -15,13 +28,8 @@ type MeetingData = {
   when_where: string;
   schedule: string;
   what_to_expect: string;
-  Speaker_0: {
-    name_0: string;
-    picture_0: string;
-    bio_0: string;
-    link1_0: string;
-    link2_0: string;
-  };
+} & {
+  [K in SpeakerIndex as `Speaker_${K}`]?: Speaker;
 };
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
@@ -113,45 +121,60 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             Featured Speakers
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Image
-                src={data.Speaker_0.picture_0} // Added image rendering
-                alt={data.Speaker_0.name_0}
-                layout="responsive"
-                width={200}
-                height={200}
-                className="mb-4 w-full" // Updated styling for full width
-              />
-              <h3 className="text-2xl font-bold mb-2">
-                {data.Speaker_0.name_0}
-              </h3>
-              <p className="font-mono text-lg mb-4">{data.Speaker_0.bio_0}</p>
-              <div className="flex gap-4">
-                {data.Speaker_0.link1_0 && (
-                  <Link
-                    href={data.Speaker_0.link1_0}
-                    target="_blank"
-                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                  >
-                    Link 1
-                  </Link>
-                )}
-                {data.Speaker_0.link2_0 && (
-                  <Link
-                    href={data.Speaker_0.link2_0}
-                    target="_blank"
-                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                  >
-                    Link 2
-                  </Link>
-                )}
-              </div>
-            </motion.div>
+            {[0, 1, 2, 3, 4, 5].map((index) => {
+              const speakerIndex = index as SpeakerIndex;
+              const speakerKey = `Speaker_${speakerIndex}` as const;
+              const nameKey = `name_${speakerIndex}` as const;
+              const pictureKey = `picture_${speakerIndex}` as const;
+              const bioKey = `bio_${speakerIndex}` as const;
+              const link1Key = `link1_${speakerIndex}` as const;
+              const link2Key = `link2_${speakerIndex}` as const;
+
+              const speaker = data[speakerKey];
+              if (!speaker || !speaker[nameKey]) return null;
+
+              return (
+                <motion.div
+                  key={index}
+                  className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
+                  <Image
+                    src={speaker[pictureKey] ?? ""}
+                    alt={speaker[nameKey] ?? ""}
+                    width={200}
+                    height={200}
+                    className="mb-4 w-full object-cover"
+                  />
+                  <h3 className="text-2xl font-bold mb-2">
+                    {speaker[nameKey]}
+                  </h3>
+                  <p className="font-mono text-lg mb-4">{speaker[bioKey]}</p>
+                  <div className="flex gap-4">
+                    {speaker[link1Key] && (
+                      <Link
+                        href={speaker[link1Key] as string}
+                        target="_blank"
+                        className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                      >
+                        Website
+                      </Link>
+                    )}
+                    {speaker[link2Key] && (
+                      <Link
+                        href={speaker[link2Key] as string}
+                        target="_blank"
+                        className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                      >
+                        Link 2
+                      </Link>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </motion.div>

@@ -45,8 +45,6 @@ export default function Hero({ data }: { data: any }) {
     delay: i * 0.2
   }))
 
-  
-
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
@@ -61,6 +59,8 @@ export default function Hero({ data }: { data: any }) {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 py-16">
+      <Script async src="https://eocampaign1.com/form/308349b2-d4f8-11ef-bbca-fb599e28767b.js" data-form="308349b2-d4f8-11ef-bbca-fb599e28767b" />
+      
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
       
       <motion.div 
@@ -109,11 +109,18 @@ export default function Hero({ data }: { data: any }) {
             <p className="text-base md:text-base mb-4 font-mono">
             {data.description}
             </p>
-            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0">
+            <Button 
+              size="lg" 
+              className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0"
+              onClick={() => {
+                
+                <Script async src="https://eocampaign1.com/form/308349b2-d4f8-11ef-bbca-fb599e28767b.js" data-form="308349b2-d4f8-11ef-bbca-fb599e28767b"></Script>
+              }}
+            >
               {data.mail_button}
             </Button>
 
-            <Script src="https://eocampaign1.com/form/308349b2-d4f8-11ef-bbca-fb599e28767b.js" data-form="308349b2-d4f8-11ef-bbca-fb599e28767b"></Script>
+           
           </div>
           
           <div className="flex justify-end">

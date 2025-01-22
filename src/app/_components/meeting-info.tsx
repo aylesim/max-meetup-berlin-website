@@ -1,35 +1,35 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import DateFormatter from './date-formatter'
+import React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import DateFormatter from "./date-formatter";
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 type MeetingData = {
-  title: string
-  subtitle: string
-  description: string
-  when_where: string
-  schedule: string
-  what_to_expect: string
+  title: string;
+  subtitle: string;
+  description: string;
+  when_where: string;
+  schedule: string;
+  what_to_expect: string;
   Speaker_0: {
-    name_0: string
-    picture_0: string
-    bio_0: string
-    link1_0: string
-    link2_0: string
-  }
-}
+    name_0: string;
+    picture_0: string;
+    bio_0: string;
+    link1_0: string;
+    link2_0: string;
+  };
+};
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
-      
-      <motion.div 
+
+      <motion.div
         className="z-10 w-full max-w-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -44,34 +44,43 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             {data.subtitle}
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Time and Location Section */}
-          <motion.div 
+          <motion.div
             className="border-l-4 border-black pl-4 transform rotate-1"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">When & Where</h2>
+            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">
+              When & Where
+            </h2>
             <div className="font-mono space-y-2">
-              <div className="text-xl whitespace-pre-wrap">{data.when_where}</div>
+              <div className="text-xl whitespace-pre-wrap">
+                {data.when_where}
+              </div>
             </div>
             <div className="mt-6">
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0">
+              <Button
+                size="lg"
+                className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0"
+              >
                 Add to Calendar
               </Button>
             </div>
           </motion.div>
 
           {/* Schedule Section */}
-          <motion.div 
+          <motion.div
             className="border-t-4 md:border-t-0 md:border-l-4 border-black pl-4 pt-4 md:pt-0 transform -rotate-1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">Schedule</h2>
+            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">
+              Schedule
+            </h2>
             <div className="font-mono space-y-4">
               <div className="text-lg whitespace-pre-wrap">{data.schedule}</div>
             </div>
@@ -79,26 +88,30 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         </div>
 
         {/* What to Expect Section */}
-        <motion.div 
+        <motion.div
           className="mt-16 border-t-4 border-black pt-8 transform rotate-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">What to Expect</h2>
+          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
+            What to Expect
+          </h2>
           <div className="text-lg font-mono space-y-4">
             <p className="whitespace-pre-wrap">{data.what_to_expect}</p>
           </div>
         </motion.div>
 
         {/* People Section */}
-        <motion.div 
+        <motion.div
           className="mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">Featured Speakers</h2>
+          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
+            Featured Speakers
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
               className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
@@ -106,7 +119,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Image 
+              <Image
                 src={data.Speaker_0.picture_0} // Added image rendering
                 alt={data.Speaker_0.name_0}
                 layout="responsive"
@@ -114,28 +127,34 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                 height={200}
                 className="mb-4 w-full" // Updated styling for full width
               />
-              <h3 className="text-2xl font-bold mb-2">{data.Speaker_0.name_0}</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {data.Speaker_0.name_0}
+              </h3>
               <p className="font-mono text-lg mb-4">{data.Speaker_0.bio_0}</p>
               <div className="flex gap-4">
-                <Link 
-                  href={data.Speaker_0.link1_0}
-                  target="_blank"
-                  className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                >
-                  Link 1
-                </Link>
-                <Link 
-                  href={data.Speaker_0.link2_0}
-                  target="_blank"
-                  className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                >
-                  Link 2
-                </Link>
+                {data.Speaker_0.link1_0 && (
+                  <Link
+                    href={data.Speaker_0.link1_0}
+                    target="_blank"
+                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                  >
+                    Link 1
+                  </Link>
+                )}
+                {data.Speaker_0.link2_0 && (
+                  <Link
+                    href={data.Speaker_0.link2_0}
+                    target="_blank"
+                    className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
+                  >
+                    Link 2
+                  </Link>
+                )}
               </div>
             </motion.div>
           </div>
         </motion.div>
       </motion.div>
     </section>
-  )
-} 
+  );
+}

@@ -69,14 +69,6 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                 {data.when_where}
               </div>
             </div>
-            <div className="mt-6">
-              <Button
-                size="lg"
-                className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform hover:rotate-0"
-              >
-                Add to Calendar
-              </Button>
-            </div>
           </motion.div>
 
           {/* Schedule Section */}

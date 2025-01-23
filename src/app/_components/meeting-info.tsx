@@ -20,7 +20,7 @@ type Speaker = {
 } & {
   [K in SpeakerIndex as `link2_${K}`]?: string;
 } & {
-  [K in SpeakerIndex as `shortdescription_${K}`]?: string;
+  shortdescription?: string;
 };
 
 type MeetingData = {
@@ -124,8 +124,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               const bioKey = `bio_${speakerIndex}` as const;
               const link1Key = `link1_${speakerIndex}` as const;
               const link2Key = `link2_${speakerIndex}` as const;
-              const shortdescriptionKey =
-                `shortdescription_${speakerIndex}` as const;
+              const shortdescriptionKey = "shortdescription" as const;
               const speaker = data[speakerKey];
               if (!speaker || !speaker[nameKey]) return null;
 
@@ -137,8 +136,8 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                 >
-                  <p className="font-mono text-sm mb-4">
-                    {speaker[shortdescriptionKey]}
+                  <p className="text-2xl font-bold mb-2 pb-4">
+                    {speaker[shortdescriptionKey] || ""}
                   </p>
                   <Image
                     src={speaker[pictureKey] ?? ""}
@@ -150,6 +149,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   <h3 className="text-2xl font-bold mb-2">
                     {speaker[nameKey]}
                   </h3>
+
                   <p className="font-mono text-lg mb-4">{speaker[bioKey]}</p>
                   <div className="flex gap-4">
                     {speaker[link1Key] && (

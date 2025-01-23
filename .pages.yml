@@ -1,8 +1,7 @@
-
 media:
   input: public/assets
   output: /assets
-  categories: [ "image" ]
+  categories: ["image"]
 content:
   - name: home
     label: Home
@@ -20,7 +19,7 @@ content:
         type: text
       - name: next_meetup_0
         label: Next meetup header
-        type: string  
+        type: string
       - name: next_meetup
         label: Next meetup
         type: text
@@ -30,25 +29,26 @@ content:
         default: true
       - name: mail_button
         label: Mail button
-        type: string  
+        type: string
 
   - name: _meetups
     label: Meetups
     type: collection
     path: _meetups
     view:
-      fields: [ title ]
+      fields: [title]
     fields:
-      - { name: title, label: Title, type: string}w
-      - { name: subtitle, label: Subtitle, type: string}
-      - { name: description, label: Description, type: string}
-      - { name: when_where, label: When & Where, type: string}
-      - { name: schedule, label: Schedule, type: string}
-      - { name: what_to_expect, label: What to expect, type: text}
+      - { name: title, label: Title, type: string }
+      - { name: subtitle, label: Subtitle, type: string }
+      - { name: description, label: Description, type: string }
+      - { name: when_where, label: When & Where, type: string }
+      - { name: schedule, label: Schedule, type: string }
+      - { name: what_to_expect, label: What to expect, type: text }
       - name: Speaker_0
         label: Speaker_0
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_0, label: Name, type: string }
           - { name: picture_0, label: Picture, type: image }
           - { name: bio_0, label: Bio, type: string }
@@ -58,6 +58,7 @@ content:
         label: Speaker_1
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_1, label: Name, type: string }
           - { name: picture_1, label: Picture, type: image }
           - { name: bio_1, label: Bio, type: string }
@@ -67,6 +68,7 @@ content:
         label: Speaker_2
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_2, label: Name, type: string }
           - { name: picture_2, label: Picture, type: image }
           - { name: bio_2, label: Bio, type: string }
@@ -76,15 +78,17 @@ content:
         label: Speaker_3
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_3, label: Name, type: string }
           - { name: picture_3, label: Picture, type: image }
           - { name: bio_3, label: Bio, type: string }
           - { name: link1_3, label: Link 1, type: string }
-          - { name: link2_3, label: Link 2, type: string }    
+          - { name: link2_3, label: Link 2, type: string }
       - name: Speaker_4
         label: Speaker_4
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_4, label: Name, type: string }
           - { name: picture_4, label: Picture, type: image }
           - { name: bio_4, label: Bio, type: string }
@@ -94,6 +98,7 @@ content:
         label: Speaker_5
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_5, label: Name, type: string }
           - { name: picture_5, label: Picture, type: image }
           - { name: bio_5, label: Bio, type: string }
@@ -103,6 +108,7 @@ content:
         label: Speaker_6
         type: object
         fields:
+          - { name: shortdescription, label: Short description, type: text }
           - { name: name_6, label: Name, type: string }
           - { name: picture_6, label: Picture, type: image }
           - { name: bio_6, label: Bio, type: string }

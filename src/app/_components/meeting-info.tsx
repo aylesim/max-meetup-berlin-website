@@ -69,6 +69,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                 {data.when_where}
               </div>
             </div>
+            s{" "}
           </motion.div>
 
           {/* Schedule Section */}

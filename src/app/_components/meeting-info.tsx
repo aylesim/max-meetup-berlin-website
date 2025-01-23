@@ -21,6 +21,8 @@ type Speaker = {
   [K in SpeakerIndex as `link2_${K}`]?: string;
 } & {
   shortdescription?: string;
+} & {
+  activityTitle?: string;
 };
 
 type MeetingData = {
@@ -125,6 +127,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               const link1Key = `link1_${speakerIndex}` as const;
               const link2Key = `link2_${speakerIndex}` as const;
               const shortdescriptionKey = "shortdescription" as const;
+              const activityTitleKey = "activityTitle" as const;
               const speaker = data[speakerKey];
               if (!speaker || !speaker[nameKey]) return null;
 
@@ -137,6 +140,9 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   transition={{ delay: 0.2 + index * 0.1 }}
                 >
                   <p className="text-2xl font-bold mb-2 pb-4">
+                    {speaker[activityTitleKey] || ""}
+                  </p>
+                  <p className="text-l font-bold mb-2 pb-4">
                     {speaker[shortdescriptionKey] || ""}
                   </p>
                   <Image

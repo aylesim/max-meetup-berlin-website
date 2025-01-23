@@ -48,6 +48,7 @@ content:
         label: Speaker_0
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_0, label: Name, type: string }
           - { name: picture_0, label: Picture, type: image }
@@ -58,6 +59,7 @@ content:
         label: Speaker_1
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_1, label: Name, type: string }
           - { name: picture_1, label: Picture, type: image }
@@ -68,6 +70,7 @@ content:
         label: Speaker_2
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_2, label: Name, type: string }
           - { name: picture_2, label: Picture, type: image }
@@ -78,6 +81,7 @@ content:
         label: Speaker_3
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_3, label: Name, type: string }
           - { name: picture_3, label: Picture, type: image }
@@ -88,6 +92,7 @@ content:
         label: Speaker_4
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_4, label: Name, type: string }
           - { name: picture_4, label: Picture, type: image }
@@ -98,6 +103,7 @@ content:
         label: Speaker_5
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_5, label: Name, type: string }
           - { name: picture_5, label: Picture, type: image }
@@ -108,6 +114,7 @@ content:
         label: Speaker_6
         type: object
         fields:
+          - { name: activityTitle, label: Activity title, type: string }
           - { name: shortdescription, label: Short description, type: text }
           - { name: name_6, label: Name, type: string }
           - { name: picture_6, label: Picture, type: image }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -37,6 +37,8 @@ type MeetingData = {
 };
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
+  const [isScheduleExpanded, setIsScheduleExpanded] = useState(false);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
@@ -57,37 +59,62 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Time and Location + Schedule Section */}
+        <div className="flex flex-col gap-4">
           {/* Time and Location Section */}
           <motion.div
-            className="border-l-4 border-black pl-4 transform rotate-1"
+            className="border-l-4 border-black pl-3 transform rotate-1"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">
+            <h2 className="text-2xl font-bold mb-2 uppercase tracking-tight">
               When & Where
             </h2>
-            <div className="font-mono space-y-2">
-              <div className="text-xl whitespace-pre-wrap">
+            <div className="font-mono">
+              <div className="text-base whitespace-pre-wrap">
                 {data.when_where}
               </div>
             </div>
-            s{" "}
           </motion.div>
 
           {/* Schedule Section */}
           <motion.div
-            className="border-t-4 md:border-t-0 md:border-l-4 border-black pl-4 pt-4 md:pt-0 transform -rotate-1"
+            className="border-l-4 border-black pl-3 transform -rotate-1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">
-              Schedule
-            </h2>
-            <div className="font-mono space-y-4">
-              <div className="text-lg whitespace-pre-wrap">{data.schedule}</div>
+            <button
+              onClick={() => setIsScheduleExpanded(!isScheduleExpanded)}
+              className="w-full text-left flex items-center justify-between group hover:bg-black/5 rounded-lg px-2 py-1 transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <h2 className="text-2xl font-bold uppercase tracking-tight">
+                  Schedule
+                </h2>
+                <span className="text-sm font-mono text-gray-600">
+                  {isScheduleExpanded ? "(click to hide)" : "(click to show)"}
+                </span>
+              </div>
+              <span
+                className={`transform transition-transform duration-300 ${
+                  isScheduleExpanded ? "rotate-180" : ""
+                } text-gray-600`}
+              >
+                ▼
+              </span>
+            </button>
+            <div
+              className={`font-mono overflow-hidden transition-all duration-300 ease-in-out mt-2 ${
+                isScheduleExpanded
+                  ? "max-h-[500px] opacity-100"
+                  : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="text-base whitespace-pre-wrap">
+                {data.schedule}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -117,7 +144,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
             Featured Speakers
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[0, 1, 2, 3, 4, 5].map((index) => {
               const speakerIndex = index as SpeakerIndex;
               const speakerKey = `Speaker_${speakerIndex}` as const;
@@ -139,10 +166,10 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                 >
-                  <p className="text-2xl font-bold mb-2 pb-4">
+                  <p className="text-2xl font-mono font-bold mb-2 pb-4">
                     {speaker[activityTitleKey] || ""}
                   </p>
-                  <p className="text-l font-bold mb-2 pb-4">
+                  <p className="text-l font-mono font-bold mb-2 pb-4">
                     {speaker[shortdescriptionKey] || ""}
                   </p>
                   <Image
@@ -152,11 +179,11 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                     height={200}
                     className="mb-4 w-full object-cover"
                   />
-                  <h3 className="text-2xl font-bold mb-2">
+                  <h3 className="font-mono text-2xl font-bold mb-2">
                     {speaker[nameKey]}
                   </h3>
 
-                  <p className="font-mono text-lg mb-4">{speaker[bioKey]}</p>
+                  <p className="font-mono text-sm mb-4">{speaker[bioKey]}</p>
                   <div className="flex gap-4">
                     {speaker[link1Key] && (
                       <Link

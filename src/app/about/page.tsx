@@ -139,7 +139,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="font-mono text-sm underline hover:text-gray-600"
                 >
-                  Connect →
+                  More →
                 </a>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="font-mono text-sm underline hover:text-gray-600"
                 >
-                  Connect →
+                  More →
                 </a>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="font-mono text-sm underline hover:text-gray-600"
                 >
-                  Connect →
+                  More →
                 </a>
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="font-mono text-sm underline hover:text-gray-600"
                 >
-                  Connect →
+                  More →
                 </a>
               </div>
             </div>

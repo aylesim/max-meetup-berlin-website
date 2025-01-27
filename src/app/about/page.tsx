@@ -191,25 +191,21 @@ export default function AboutPage() {
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">
-                  Alessandro Miracapillo
+                  Aylesim (Alessandro Miracapillo)
                 </h3>
                 <p className="font-mono text-sm mb-4">
-                  Aylesim is an Italian artist and developer currently based in
-                  Berlin, specializing in the intersection of technology, music,
-                  and art. He creates immersive audio-visual experiences,
-                  interactive installations, and self-playing instruments, with
-                  a focus on designing custom Max for Live devices. Aylesim has
-                  a deep passion for both creating technological tools as a
-                  developer and critiquing them through his artistic work. His
-                  projects explore the duality of technology—embracing its
-                  creative potential while questioning its role and impact in
-                  society. With a background in electronic music composition and
-                  interactive design, Aylesim has presented his work in
-                  exhibitions, live performances, and workshops, collaborating
-                  with organizations such as Isotonik Studios and La Scuola Open
-                  Source. His contributions to the field have earned him several
-                  accolades, including first prize in the "Electronic Arts"
-                  category at the XV International Italian Art Prize.
+                  Aylesim, an Italian artist and developer based in Berlin,
+                  specializes in the intersection of technology, music, and art.
+                  He creates immersive AV works, installations, and automatic
+                  instruments, with a focus on M4L device design. Passionate
+                  about developing and critiquing tech tools, his work explores
+                  technology’s creative potential and societal impact. Trained
+                  in electronic music composition and interactive design,
+                  Aylesim has showcased his work through exhibitions,
+                  performances, and workshops, collaborating with organizations
+                  like Isotonik Studios and La Scuola Open Source. He won first
+                  prize in "Electronic Arts" at the XV International Italian Art
+                  Prize.
                 </p>
                 <a
                   href="https://www.aylesim.com"
@@ -235,34 +231,17 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Eduardo Pesole</h3>
                 <p className="font-mono text-sm mb-4">
-                  Eduardo Pesole is a Berlin-based sound designer, sound artist
-                  and composer. He is a graduate in Sound Design from IED -
-                  Istituto Europeo di Design, Rome. He has worked with studios
-                  like Point Blank Games, 505 Games and Oneoone Games,
-                  developing multi-platform games such as "Stray Blade" a 3rd
-                  person action RPG, the generative environmental systems for
-                  the unreleased "Aftermath", and some music for online racing
-                  games. Eduardo started playing guitars and bass at the age of
-                  14 in some psychedelic rock bands. From 2019 to 2021, he
-                  worked as mix engineer, audio editor and sound designer for
-                  short movies, until he switched to interactive sound design
-                  and tech audio for video games and interactive installations
-                  and eventually left Rome to move to Berlin. Meanwhile, he also
-                  worked as a composer for fashion movies and collections,
-                  collaborated with other artists and developed solo projects:
-                  the latest under the name: "Hypocyrta Glabra" with which, on
-                  september 2024 released the album "Botanical Garden" out with
-                  the bristol based Nostro Hood System. The knowledge acquired
-                  from the game industry makes him able to move easily through
-                  multidisciplinary projects and to experiment with acoustics
-                  and the architecture of spaces through the use of spatial
-                  audio technology, within both the digital and the real world.
-                  He has a personal and genuine aesthetic that fully encloses
-                  all different genres he likes and gets inspiration from, in an
-                  organic and evolving form of sound narration. The use of
-                  analog synthesizers, granular synthesis and resampling allows
-                  him to design soundscapes and explore unique and interesting
-                  timbres.
+                  Eduardo Pesole, a Berlin-based sound designer, artist, and
+                  composer, graduated in Sound Design from IED Rome. In gaming,
+                  he worked with studios like Point Blank Games, 505 Games, and
+                  Oneoone Games, contributing to projects like Stray Blade. A
+                  guitarist and bassist since his teens, he played in
+                  psychedelic rock bands. Before Berlin, he mixed, edited, and
+                  composed for shorts and fashion films. In 2024, under
+                  Hypocirta Glabra, he released Botanical Garden via Nostro Hood
+                  System (Bristol). His multidisciplinary work spans spatial
+                  audio, soundscapes, analog synths, granular synthesis, and
+                  resampling.
                 </p>
                 <a
                   href="https://www.eduardopesole.com"

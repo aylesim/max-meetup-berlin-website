@@ -8,8 +8,19 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Max Berlin Network ${CMS_NAME}`,
-  description: `A community of Max based in Berlin.`,
+  title: `Max Berlin Network`,
+  description: `Max community based in Berlin`,
+  openGraph: {
+    title: `Max Berlin Network`,
+    description: `Max community based in Berlin`,
+    url: `https://maxberlin.network`,
+    siteName: `Max Berlin Network`,
+    images: [
+      {
+        url: `/screen.png`, // This is the preview image
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

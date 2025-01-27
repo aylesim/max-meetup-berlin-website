@@ -34,7 +34,7 @@ export default function BetaPage() {
             <p className="text-2xl font-mono">
               February the 15th 2025
               <br />
-              1:00 PM - 8:00 PM
+              3:00 PM - 7:00 PM
             </p>
           </div>
         </div>

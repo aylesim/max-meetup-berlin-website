@@ -2,44 +2,43 @@ import Image from "next/image";
 
 export default function BetaPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-24">
-      <div className="relative w-full max-w-5xl">
-        <div className="grid grid-cols-1 gap-8">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
+      <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
+
+      <div className="w-full max-w-5xl relative">
+        <div className="flex flex-col gap-12">
           {/* Image Container */}
-          <div className="relative aspect-square w-full overflow-hidden">
+          <div className="relative w-full h-[60vh] overflow-hidden">
             <Image
               src="/beta.jpg"
-              alt="Beta Haus Berlin"
+              alt="Beta Haus Berlin in black and white"
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", filter: "grayscale(100%)" }}
               priority
               className="transition-all duration-500 hover:scale-105"
             />
           </div>
 
-          {/* Info Container */}
-          <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-2">
-            <div className="space-y-2">
-              <h2 className="text-xl font-bold">WHERE</h2>
-              <p className="text-lg">
-                Beta Haus
-                <br />
-                Prinzessinnenstraße 23
-                <br />
-                10969 Berlin
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h2 className="text-xl font-bold">WHEN</h2>
-              <p className="text-lg">
-                Friday, April 26th 2024
-                <br />
-                19:00 - 23:00
-              </p>
-            </div>
+          {/* Location - Large Centered */}
+          <div className="text-center space-y-6">
+            <p className="text-7xl md:text-8xl font-mono font-bold transform -rotate-1">
+              @ Betahaus
+            </p>
+            <p className="text-2xl font-mono opacity-80">
+              Rudi-Dutschke-Straße 23, 10969 Berlin
+            </p>
+          </div>
+
+          {/* Time Info */}
+          <div className="text-center space-y-4">
+            <p className="text-2xl font-mono">
+              February the 15th 2025
+              <br />
+              1:00 PM - 8:00 PM
+            </p>
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

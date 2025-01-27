@@ -17,7 +17,9 @@ export const metadata: Metadata = {
     siteName: `Max Berlin Network`,
     images: [
       {
-        url: `/screen.png`, // This is the preview image
+        url: `https://maxberlin.network/screen.png`, // Percorso assoluto all'immagine
+        width: 1200,
+        height: 630,
       },
     ],
   },

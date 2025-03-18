@@ -3,6 +3,12 @@
 import { MeetupWithSlug, SpeakerIndex } from "@/interfaces/meeting";
 import Image from "next/image";
 
+// Helper type for dynamic Speaker keys
+type SpeakerKey = `Speaker_${SpeakerIndex}`;
+type NameKey = `name_${SpeakerIndex}`;
+type PictureKey = `picture_${SpeakerIndex}`;
+type BioKey = `bio_${SpeakerIndex}`;
+
 export default function SpeakerTemplate({
   data,
   speakerIndex = 0,
@@ -10,13 +16,16 @@ export default function SpeakerTemplate({
   data: MeetupWithSlug;
   speakerIndex?: number;
 }) {
-  // Get current speaker data
-  const speakerKey = `Speaker_${speakerIndex}` as const;
-  const nameKey = `name_${speakerIndex}` as const;
-  const pictureKey = `picture_${speakerIndex}` as const;
-  const bioKey = `bio_${speakerIndex}` as const;
+  // Ensure speakerIndex is a valid SpeakerIndex
+  const idx = speakerIndex as SpeakerIndex;
 
-  const speaker = data[speakerKey] as any;
+  // Get current speaker data
+  const speakerKey = `Speaker_${idx}` as SpeakerKey;
+  const nameKey = `name_${idx}` as NameKey;
+  const pictureKey = `picture_${idx}` as PictureKey;
+  const bioKey = `bio_${idx}` as BioKey;
+
+  const speaker = data[speakerKey];
   if (!speaker || !speaker[nameKey]) {
     return <div className="p-4">No speaker information available</div>;
   }

@@ -3,38 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-type MeetingData = {
-  title: string;
-  subtitle: string;
-  description: string;
-  when_where: string;
-  schedule: string;
-  what_to_expect: string;
-  Speaker_0: {
-    name_0: string;
-    picture_0: string;
-    bio_0: string;
-    link1_0: string;
-    link2_0: string;
-  };
-  Speaker_1?: {
-    activityTitle: string;
-    shortdescription: string;
-    name_1: string;
-    picture_1: string;
-    bio_1: string;
-    link1_1: string;
-  };
-  Speaker_2?: {
-    activityTitle: string;
-    shortdescription: string;
-    name_2: string;
-    picture_2: string;
-    bio_2: string;
-    link1_2: string;
-  };
-};
+import { MeetingData } from "@/interfaces/meeting";
 
 export default function SquarePosterContent({ data }: { data: MeetingData }) {
   return (

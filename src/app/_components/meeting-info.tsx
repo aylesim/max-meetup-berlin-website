@@ -3,38 +3,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-
 import Image from "next/image";
 import Link from "next/link";
-
-type SpeakerIndex = 0 | 1 | 2 | 3 | 4 | 5;
-
-type Speaker = {
-  [K in SpeakerIndex as `name_${K}`]?: string;
-} & {
-  [K in SpeakerIndex as `picture_${K}`]?: string;
-} & {
-  [K in SpeakerIndex as `bio_${K}`]?: string;
-} & {
-  [K in SpeakerIndex as `link1_${K}`]?: string;
-} & {
-  [K in SpeakerIndex as `link2_${K}`]?: string;
-} & {
-  shortdescription?: string;
-} & {
-  activityTitle?: string;
-};
-
-type MeetingData = {
-  title: string;
-  subtitle: string;
-  description: string;
-  when_where: string;
-  schedule: string;
-  what_to_expect: string;
-} & {
-  [K in SpeakerIndex as `Speaker_${K}`]?: Speaker;
-};
+import { MeetingData, Speaker, SpeakerIndex } from "@/interfaces/meeting";
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
   const [isScheduleExpanded, setIsScheduleExpanded] = useState(false);
@@ -145,7 +116,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             Featured Speakers
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[0, 1, 2, 3, 4, 5].map((index) => {
+            {[0, 1, 2, 3, 4, 5, 6].map((index) => {
               const speakerIndex = index as SpeakerIndex;
               const speakerKey = `Speaker_${speakerIndex}` as const;
               const nameKey = `name_${speakerIndex}` as const;

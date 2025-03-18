@@ -1,4 +1,4 @@
-export type SpeakerIndex = 0 | 1 | 2;
+export type SpeakerIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type Speaker = {
   activityTitle?: string;
@@ -22,7 +22,16 @@ export type MeetingData = {
   when_where: string;
   schedule: string;
   what_to_expect: string;
-  Speaker_0: Speaker;
+  is_next?: boolean;
+  Speaker_0?: Speaker;
   Speaker_1?: Speaker;
   Speaker_2?: Speaker;
+  Speaker_3?: Speaker;
+  Speaker_4?: Speaker;
+  Speaker_5?: Speaker;
+  Speaker_6?: Speaker;
+};
+
+export type MeetupWithSlug = MeetingData & {
+  slug: string;
 };

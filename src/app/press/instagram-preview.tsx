@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { MeetupWithSlug } from "@/interfaces/meeting";
+import { MeetupWithSlug, SpeakerIndex } from "@/interfaces/meeting";
 import { Button } from "@/components/ui/button";
 import html2canvas from "html2canvas";
 import dynamic from "next/dynamic";
@@ -14,6 +14,10 @@ const DetailsTemplate = dynamic(() => import("./templates/details-template"));
 const ScheduleTemplate = dynamic(() => import("./templates/schedule-template"));
 
 type TemplateType = "poster" | "speaker" | "details" | "schedule";
+
+// Helper type for dynamic Speaker keys
+type SpeakerKey = `Speaker_${SpeakerIndex}`;
+type NameKey = `name_${SpeakerIndex}`;
 
 export default function InstagramPreview({
   meetup,
@@ -29,11 +33,12 @@ export default function InstagramPreview({
   const availableSpeakers =
     templateType === "speaker"
       ? (Array.from({ length: 7 }, (_, i) => {
-          const speakerKey = `Speaker_${i}` as const;
-          const nameKey = `name_${i}` as const;
-          const speaker = meetup[speakerKey] as any;
-          return speaker && speaker[nameKey] ? i : null;
-        }).filter((i) => i !== null) as number[])
+          const idx = i as SpeakerIndex;
+          const speakerKey = `Speaker_${idx}` as SpeakerKey;
+          const nameKey = `name_${idx}` as NameKey;
+          const speaker = meetup[speakerKey];
+          return speaker && speaker[nameKey] ? idx : null;
+        }).filter((i) => i !== null) as SpeakerIndex[])
       : [];
 
   const templateTitle =
@@ -47,7 +52,7 @@ export default function InstagramPreview({
       schedule: "Event Schedule",
     }[templateType as TemplateType] || "Preview";
 
-  const downloadImage = async (speakerIndex?: number) => {
+  const downloadImage = async (speakerIndex?: SpeakerIndex) => {
     if (!previewRef.current) return;
 
     try {
@@ -106,47 +111,52 @@ export default function InstagramPreview({
     if (templateType === "speaker" && availableSpeakers.length > 0) {
       return (
         <div className="space-y-10">
-          {availableSpeakers.map((speakerIndex) => (
-            <div key={speakerIndex} className="mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold font-mono">
-                  Speaker:{" "}
-                  {(meetup[`Speaker_${speakerIndex}` as const] as any)?.[
-                    `name_${speakerIndex}` as const
-                  ] || ""}
-                </h3>
-                <Button
-                  onClick={() => downloadImage(speakerIndex)}
-                  disabled={isGenerating}
-                  className="bg-black text-white hover:bg-gray-800"
-                >
-                  {isGenerating ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Image
-                    </>
-                  )}
-                </Button>
-              </div>
-              <div
-                className="border-2 border-black bg-white flex justify-center items-center p-4"
-                style={{ maxWidth: "650px", margin: "0 auto" }}
-              >
+          {availableSpeakers.map((speakerIndex) => {
+            const speakerKey = `Speaker_${speakerIndex}` as SpeakerKey;
+            const nameKey = `name_${speakerIndex}` as NameKey;
+            const speaker = meetup[speakerKey];
+            return (
+              <div key={speakerIndex} className="mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold font-mono">
+                    Speaker: {speaker?.[nameKey] || ""}
+                  </h3>
+                  <Button
+                    onClick={() => downloadImage(speakerIndex)}
+                    disabled={isGenerating}
+                    className="bg-black text-white hover:bg-gray-800"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Image
+                      </>
+                    )}
+                  </Button>
+                </div>
                 <div
-                  id={`speaker-card-${speakerIndex}`}
-                  className="w-[600px] h-[600px] relative bg-white overflow-hidden"
-                  style={{ aspectRatio: "1/1" }}
+                  className="border-2 border-black bg-white flex justify-center items-center p-4"
+                  style={{ maxWidth: "650px", margin: "0 auto" }}
                 >
-                  <SpeakerTemplate data={meetup} speakerIndex={speakerIndex} />
+                  <div
+                    id={`speaker-card-${speakerIndex}`}
+                    className="w-[600px] h-[600px] relative bg-white overflow-hidden"
+                    style={{ aspectRatio: "1/1" }}
+                  >
+                    <SpeakerTemplate
+                      data={meetup}
+                      speakerIndex={speakerIndex}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       );
     }

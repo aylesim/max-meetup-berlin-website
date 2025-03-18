@@ -16,7 +16,7 @@ export default async function MeetingPage() {
   if (nextMeetup) {
     redirect(`/meeting/${nextMeetup.slug}`);
   } else {
-    // Fallback to the known meetup if no meetups found
-    redirect(`/meeting/2025-01-17-next`);
+    // Redirect to home if no meetups found
+    redirect("/");
   }
 }

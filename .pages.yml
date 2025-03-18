@@ -36,8 +36,9 @@ content:
     type: collection
     path: _meetups
     view:
-      fields: [title]
+      fields: [title, is_next]
     fields:
+      - { name: is_next, label: Is Next Meetup, type: boolean, default: false }
       - { name: title, label: Title, type: string }
       - { name: subtitle, label: Subtitle, type: string }
       - { name: description, label: Description, type: string }

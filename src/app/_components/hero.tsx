@@ -60,6 +60,16 @@ export default function Hero({ data }: { data: any }) {
     };
   }, []);
 
+  // Use the nextMeetupData if available, otherwise fall back to the data.next_meetup
+  const nextMeetupInfo = data.nextMeetupData
+    ? data.nextMeetupData.when_where
+    : data.next_meetup;
+
+  // Use the dynamic slug if available
+  const meetingUrl = data.nextMeetupData
+    ? `/meeting/${data.nextMeetupData.slug}`
+    : "/meeting";
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 py-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
@@ -84,13 +94,13 @@ export default function Hero({ data }: { data: any }) {
             <div className="text-6xl font-bold mb-2 uppercase tracking-tight">
               {data.next_meetup_0}
             </div>
-            <div className="font-mono mb-6">{data.next_meetup}</div>
+            <div className="font-mono mb-6">{nextMeetupInfo}</div>
             <div className="relative">
               {data.isFlashy &&
                 arrows.map((arrow, i) => (
                   <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
                 ))}
-              <Link href="/meeting">
+              <Link href={meetingUrl}>
                 <Button
                   size="lg"
                   className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0"
@@ -123,13 +133,21 @@ export default function Hero({ data }: { data: any }) {
               </Button>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-4 space-x-4">
               <Link href="/about">
                 <Button
                   size="lg"
-                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0 mt-4"
+                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0"
                 >
                   About
+                </Button>
+              </Link>
+              <Link href="/archive">
+                <Button
+                  size="lg"
+                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[2deg] transition-transform hover:rotate-0"
+                >
+                  Archive
                 </Button>
               </Link>
             </div>

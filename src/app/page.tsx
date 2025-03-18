@@ -1,19 +1,24 @@
 import Container from "@/app/_components/container";
-import  Hero  from "@/app/_components/hero";
-
-import fs from "fs";
-import YAML from "yaml";
-import path from 'path';
-
-async function getData() {
-  const filePath = path.join(process.cwd(),  '_home.yml');
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  return YAML.parse(fileContents);
-}
+import Hero from "@/app/_components/hero";
+import { getHomeData, getNextMeetup } from "@/lib/api";
 
 export default async function Index() {
-  const data = await getData();
-  
+  const homeData = await getHomeData();
+  const nextMeetup = await getNextMeetup();
+
+  // Prepare data for hero component
+  const data = {
+    ...homeData,
+    // If we have a next meetup, extract and format the when_where info
+    nextMeetupData: nextMeetup
+      ? {
+          title: nextMeetup.title,
+          when_where: nextMeetup.when_where,
+          slug: nextMeetup.slug,
+        }
+      : null,
+  };
+
   return (
     <main>
       <Container>

@@ -81,6 +81,24 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             </div>
           </motion.div>
 
+          {/* Event Link Section */}
+          {data.event_link && (
+            <motion.div
+              className="border-l-4 border-black pl-3 transform -rotate-1"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <Link
+                href={data.event_link}
+                target="_blank"
+                className="inline-block bg-black text-white px-6 py-3 font-mono text-lg hover:bg-gray-800 transition-colors transform hover:-rotate-1"
+              >
+                Reserve a Spot →
+              </Link>
+            </motion.div>
+          )}
+
           {/* Schedule Section */}
           <motion.div
             className="border-l-4 border-black pl-3 transform -rotate-1"

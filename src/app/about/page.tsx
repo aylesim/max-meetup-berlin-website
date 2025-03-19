@@ -3,11 +3,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function AboutPage() {
+  const searchParams = useSearchParams();
+  const fromArchive = searchParams.get("from") === "archive";
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
+
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-20">
+        <Link href={fromArchive ? "/archive" : "/"}>
+          <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+            ← Back to {fromArchive ? "Archive" : "Home"}
+          </button>
+        </Link>
+      </div>
 
       <motion.div
         className="z-10 w-full max-w-4xl"
@@ -122,16 +136,26 @@ export default function AboutPage() {
                   Massimiliano Cerioni
                 </h3>
                 <p className="font-mono text-sm mb-4">
-                  Massimiliano Cerioni (1986, Italy) is an award-winning
-                  composer based in Berlin. He holds an MMus in electronic music
+                  Massimiliano Cerioni (1986, Italy) is a composer and sound
+                  engineer based in Berlin. He holds an MA in electronic music
                   from the Alfredo Casella Conservatory of Music (L'Aquila, IT)
-                  and is also a sound engineer, sound artist, educator, and Max
-                  Certified Trainer since 2024. Massimiliano is proficient in
-                  composition, sound design, digital signal processing for audio
-                  and music applications, generative algorithms, creative
-                  coding, sound art, Audiovisual installations, augmented
-                  instrument design, and performance. He teaches these topics in
-                  person and online via Zoom.
+                  and is also a sound artist, educator, and Max Certified
+                  Trainer. As a researcher and developer affiliated with the
+                  Alfredo Casella Conservatory of Music of L'Aquila (Italy), he
+                  works at the EAR Research Project, dedicated to expanding the
+                  capabilities of the AI system °'°Kobi. Cerioni's work spans
+                  music, sound design, creative coding, audiovisual
+                  installations, generative algorithms, DSP for music
+                  applications, custom software development, augmented
+                  instrument design, and performance. In 2015, he won 1st prize
+                  at the National Arts Prize 'Premio Abbado.' His works have
+                  been featured at festivals such as CTM, ICMC, Tempo Reale,
+                  Artescienza, Kunsttage Basel, and the Psychedelic Film and
+                  Music Festival. He collaborates with various artists and is
+                  part of the collectives Radius, Wasch, and Max Berlin Network.
+                  He releases his music with Elli Records (France), and
+                  distributes his Max For live Devices with Isotonik Studio,
+                  under the name Culto.
                 </p>
                 <a
                   href="https://cerionimusic.com/"
@@ -199,7 +223,7 @@ export default function AboutPage() {
                   He creates immersive AV works, installations, and automatic
                   instruments, with a focus on M4L device design. Passionate
                   about developing and critiquing tech tools, his work explores
-                  technology’s creative potential and societal impact. Trained
+                  technology's creative potential and societal impact. Trained
                   in electronic music composition and interactive design,
                   Aylesim has showcased his work through exhibitions,
                   performances, and workshops, collaborating with organizations

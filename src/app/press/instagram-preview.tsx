@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { MeetupWithSlug, SpeakerIndex } from "@/interfaces/meeting";
 import { Button } from "@/components/ui/button";
-import html2canvas from "html2canvas";
 import dynamic from "next/dynamic";
-import { Download, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import ScreenshotHelper from "./templates/screenshot-helper";
 
 // Dynamically import all template components
 const PosterTemplate = dynamic(() => import("./templates/poster-template"));
@@ -27,7 +27,23 @@ export default function InstagramPreview({
   templateType: string;
 }) {
   const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const speakerRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  // Ensure fonts are loaded
+  useEffect(() => {
+    // Check if document.fonts is available (modern browsers)
+    if (typeof document !== "undefined" && "fonts" in document) {
+      document.fonts.ready.then(() => {
+        setFontsLoaded(true);
+      });
+    } else {
+      // Fallback for older browsers - just assume fonts are loaded after a delay
+      setTimeout(() => setFontsLoaded(true), 2000);
+    }
+  }, []);
 
   // Find all available speakers
   const availableSpeakers =
@@ -52,60 +68,6 @@ export default function InstagramPreview({
       schedule: "Event Schedule",
     }[templateType as TemplateType] || "Preview";
 
-  const downloadImage = async (speakerIndex?: SpeakerIndex) => {
-    if (!previewRef.current) return;
-
-    try {
-      setIsGenerating(true);
-
-      // For speaker template with multiple speakers, select the specific container
-      const element =
-        speakerIndex !== undefined
-          ? document.getElementById(`speaker-card-${speakerIndex}`)
-          : previewRef.current;
-
-      if (!element) {
-        setIsGenerating(false);
-        return;
-      }
-
-      // Get the template component
-      const canvas = await html2canvas(element, {
-        scale: 3, // Higher resolution
-        backgroundColor: "#ffffff",
-        logging: false,
-      });
-
-      // Convert to blob
-      canvas.toBlob((blob) => {
-        if (!blob) {
-          console.error("Could not generate image");
-          setIsGenerating(false);
-          return;
-        }
-
-        // Create download link
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        const speakerSuffix =
-          speakerIndex !== undefined ? `-speaker-${speakerIndex}` : "";
-        const fileName = `max-meetup-${meetup.slug}-${templateType}${speakerSuffix}.png`;
-
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-
-        setIsGenerating(false);
-      }, "image/png");
-    } catch (error) {
-      console.error("Error generating image:", error);
-      setIsGenerating(false);
-    }
-  };
-
   // Render the appropriate template based on type
   const renderTemplate = () => {
     if (templateType === "speaker" && availableSpeakers.length > 0) {
@@ -115,37 +77,33 @@ export default function InstagramPreview({
             const speakerKey = `Speaker_${speakerIndex}` as SpeakerKey;
             const nameKey = `name_${speakerIndex}` as NameKey;
             const speaker = meetup[speakerKey];
+            // Generate a truly unique ID for each speaker
+            const uniqueSpeakerId = `speaker-card-${speakerIndex}-${
+              meetup.slug
+            }-${Math.random().toString(36).substring(2, 9)}`;
+
             return (
               <div key={speakerIndex} className="mb-8">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold font-mono">
                     Speaker: {speaker?.[nameKey] || ""}
                   </h3>
-                  <Button
-                    onClick={() => downloadImage(speakerIndex)}
-                    disabled={isGenerating}
-                    className="bg-black text-white hover:bg-gray-800"
-                  >
-                    {isGenerating ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating...
-                      </>
-                    ) : (
-                      <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download Image
-                      </>
-                    )}
-                  </Button>
+                  <ScreenshotHelper
+                    elementId={uniqueSpeakerId}
+                    title={`Speaker-${speakerIndex + 1}`}
+                    isDisabled={!fontsLoaded}
+                  />
                 </div>
                 <div
                   className="border-2 border-black bg-white flex justify-center items-center p-4"
                   style={{ maxWidth: "650px", margin: "0 auto" }}
                 >
                   <div
-                    id={`speaker-card-${speakerIndex}`}
-                    className="w-[600px] h-[600px] relative bg-white overflow-hidden"
+                    id={uniqueSpeakerId}
+                    ref={(el) => {
+                      speakerRefs.current[speakerIndex] = el;
+                    }}
+                    className="w-[600px] h-[600px] relative bg-white overflow-visible"
                     style={{ aspectRatio: "1/1" }}
                   >
                     <SpeakerTemplate
@@ -177,28 +135,28 @@ export default function InstagramPreview({
 
   // For non-speaker templates or if no speakers
   if (templateType !== "speaker" || availableSpeakers.length === 0) {
+    // Generate a unique ID for this template
+    const uniqueTemplateId = `template-${templateType}-${
+      meetup.slug
+    }-${Math.random().toString(36).substring(2, 9)}`;
+
     return (
       <div className="mb-12">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold font-mono">{templateTitle}</h3>
-          <Button
-            onClick={() => downloadImage()}
-            disabled={isGenerating}
-            className="bg-black text-white hover:bg-gray-800"
-          >
-            {isGenerating ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating...
-              </>
-            ) : (
-              <>
-                <Download className="mr-2 h-4 w-4" />
-                Download Image
-              </>
-            )}
-          </Button>
+          <ScreenshotHelper
+            elementId={uniqueTemplateId}
+            title={templateTitle}
+            isDisabled={!fontsLoaded}
+          />
         </div>
+
+        {/* Error message */}
+        {error && (
+          <div className="mb-4 p-2 bg-red-100 text-red-800 rounded text-sm">
+            {error}
+          </div>
+        )}
 
         {/* Instagram Preview Container */}
         <div
@@ -207,7 +165,8 @@ export default function InstagramPreview({
         >
           <div
             ref={previewRef}
-            className="w-[600px] h-[600px] relative bg-white overflow-hidden"
+            id={uniqueTemplateId}
+            className="w-[600px] h-[600px] relative bg-white overflow-visible"
             style={{ aspectRatio: "1/1" }}
           >
             {renderTemplate()}
@@ -223,6 +182,13 @@ export default function InstagramPreview({
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold font-mono">{templateTitle}</h3>
       </div>
+
+      {/* Error message */}
+      {error && (
+        <div className="mb-4 p-2 bg-red-100 text-red-800 rounded text-sm">
+          {error}
+        </div>
+      )}
 
       {renderTemplate()}
     </div>

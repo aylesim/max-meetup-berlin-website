@@ -13,6 +13,7 @@
     "date-fns": "^3.3.1",
     "framer-motion": "^11.17.0",
     "gray-matter": "^4.0.3",
+    "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
     "js-yaml": "^4.1.0",
     "lucide-react": "^0.471.2",

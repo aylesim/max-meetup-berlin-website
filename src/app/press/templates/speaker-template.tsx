@@ -32,16 +32,16 @@ export default function SpeakerTemplate({
 
   return (
     <div className="w-full h-full relative bg-white text-black overflow-hidden">
-      <div className="relative z-10 w-full h-full p-6 flex flex-col">
+      <div className="relative z-10 w-full h-full p-4 flex flex-col">
         {/* Name */}
-        <h2 className="text-4xl font-bold mb-4 transform -rotate-2">
+        <h2 className="text-4xl font-bold mb-2 transform -rotate-2">
           {speaker[nameKey]}
         </h2>
 
         {/* Speaker Info Container */}
         <div className="flex flex-col flex-1">
           {/* Header Row with Image and Basic Info */}
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-3 mb-2">
             {/* Image Column */}
             {speaker[pictureKey] && (
               <div className="w-1/2 transform rotate-1">
@@ -62,35 +62,30 @@ export default function SpeakerTemplate({
             {/* Basic Info Column */}
             <div className="w-1/2 flex flex-col">
               {speaker.activityTitle && (
-                <h1 className="text-xl font-bold mb-3 font-mono transform -rotate-2 break-words">
+                <h1 className="text-lg font-bold mb-2 font-mono transform -rotate-2 break-words">
                   {speaker.activityTitle}
                 </h1>
               )}
 
               {speaker.shortdescription && (
-                <p className="text-xs font-mono mb-3 border-l-4 border-black pl-2 break-words">
+                <p className="text-xs font-mono mb-2 border-l-4 border-black pl-2 break-words">
                   {speaker.shortdescription}
                 </p>
               )}
             </div>
           </div>
 
-          {/* Bio Section - with max-height based on available space */}
+          {/* Bio Section with maximized height */}
           <div
-            className="font-mono text-xs whitespace-pre-wrap leading-relaxed overflow-y-auto flex-grow mb-4"
-            style={{ maxHeight: "120px" }}
+            className="font-mono text-xs whitespace-pre-wrap leading-relaxed overflow-y-auto flex-grow"
+            style={{ maxHeight: "240px" }}
           >
             {speaker[bioKey]}
           </div>
 
-          {/* Event Info - fixed at bottom with appropriate spacing */}
-          <div className="mt-auto border-t-2 border-black pt-3">
-            <h3 className="text-lg font-bold uppercase transform rotate-1 whitespace-nowrap overflow-hidden text-ellipsis">
-              {data.title}
-            </h3>
-            <p className="font-mono text-xs whitespace-nowrap overflow-hidden text-ellipsis">
-              {data.when_where?.split("\n")[0]}
-            </p>
+          {/* Minimized title reference */}
+          <div className="mt-1 text-right">
+            <small className="text-xs italic opacity-75">{data.title}</small>
           </div>
         </div>
       </div>

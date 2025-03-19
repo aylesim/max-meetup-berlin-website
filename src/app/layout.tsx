@@ -12,6 +12,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: `Max Berlin Network`,
   description: `Max community based in Berlin`,
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
   openGraph: {
     title: `Max Berlin Network`,
     description: `Max community based in Berlin`,

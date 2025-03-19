@@ -46,7 +46,7 @@ export default function SpeakerTemplate({
             {speaker[pictureKey] && (
               <div className="w-1/2 transform rotate-1">
                 <div
-                  className="relative w-full border-2 border-black overflow-hidden"
+                  className="relative w-full overflow-hidden"
                   style={{ aspectRatio: "1/1" }}
                 >
                   <Image

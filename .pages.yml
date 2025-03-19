@@ -42,6 +42,7 @@ content:
       - { name: title, label: Title, type: string }
       - { name: subtitle, label: Subtitle, type: string }
       - { name: description, label: Description, type: string }
+      - { name: event_link, label: Event Link, type: string }
       - { name: when_where, label: When & Where, type: text }
       - { name: schedule, label: Schedule, type: text }
       - { name: what_to_expect, label: What to expect, type: text }

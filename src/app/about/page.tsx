@@ -1,27 +1,46 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export default function AboutPage() {
+// Client component for the back button
+function BackButton() {
   const searchParams = useSearchParams();
   const fromArchive = searchParams.get("from") === "archive";
 
   return (
+    <div className="absolute top-4 left-4 z-20">
+      <Link href={fromArchive ? "/archive" : "/"}>
+        <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+          ← Back to {fromArchive ? "Archive" : "Home"}
+        </button>
+      </Link>
+    </div>
+  );
+}
+
+export default function AboutPage() {
+  return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
 
-      {/* Back Button */}
-      <div className="absolute top-4 left-4 z-20">
-        <Link href={fromArchive ? "/archive" : "/"}>
-          <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
-            ← Back to {fromArchive ? "Archive" : "Home"}
-          </button>
-        </Link>
-      </div>
+      {/* Back Button with Suspense */}
+      <Suspense
+        fallback={
+          <div className="absolute top-4 left-4 z-20">
+            <Link href="/">
+              <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+                ← Back to Home
+              </button>
+            </Link>
+          </div>
+        }
+      >
+        <BackButton />
+      </Suspense>
 
       <motion.div
         className="z-10 w-full max-w-4xl"

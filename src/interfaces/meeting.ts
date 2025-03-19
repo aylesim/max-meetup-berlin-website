@@ -23,6 +23,7 @@ export type MeetingData = {
   schedule: string;
   what_to_expect: string;
   is_next?: boolean;
+  event_link?: string;
   Speaker_0?: Speaker;
   Speaker_1?: Speaker;
   Speaker_2?: Speaker;

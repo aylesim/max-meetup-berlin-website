@@ -75,7 +75,7 @@ export default function Hero({ data }: { data: any }) {
     : "/meeting";
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 py-16">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white px-4 py-16 w-full">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
 
       <motion.div
@@ -84,7 +84,7 @@ export default function Hero({ data }: { data: any }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="border-4 border-black p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
+        <div className="border-4 border-black dark:border-white p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
             {data.title}
           </h1>
@@ -94,7 +94,7 @@ export default function Hero({ data }: { data: any }) {
         </div>
 
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          <motion.div className="flex-1 border-white  transform -rotate-1 relative">
+          <motion.div className="flex-1 transform -rotate-1 relative">
             <div className="text-6xl font-bold mb-2 uppercase tracking-tight">
               {data.next_meetup_0}
             </div>
@@ -113,7 +113,7 @@ export default function Hero({ data }: { data: any }) {
               <Link href={meetingUrl}>
                 <Button
                   size="lg"
-                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0"
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0"
                 >
                   More info
                 </Button>
@@ -122,7 +122,7 @@ export default function Hero({ data }: { data: any }) {
           </motion.div>
 
           <div className="flex-1">
-            <div className=" border-l-4 border-b-4 border-black pl-4 transform rotate-1">
+            <div className=" border-l-4 border-b-4 border-black dark:border-white pl-4 transform rotate-1">
               <div className="text-xl font-bold mb-2 uppercase tracking-tight">
                 Newsletter
               </div>
@@ -131,7 +131,7 @@ export default function Hero({ data }: { data: any }) {
               </p>
               <Button
                 size="lg"
-                className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0"
+                className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0"
                 onClick={() => {
                   window.open(
                     "https://e3a5acc8d26511efb40edbb296134c3a.eo.page/ymjkn",
@@ -147,7 +147,7 @@ export default function Hero({ data }: { data: any }) {
               <Link href="/about">
                 <Button
                   size="lg"
-                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0"
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-[-2deg] transition-transform hover:rotate-0"
                 >
                   About
                 </Button>
@@ -155,7 +155,7 @@ export default function Hero({ data }: { data: any }) {
               <Link href="/archive">
                 <Button
                   size="lg"
-                  className="bg-black text-white hover:bg-gray-800 rounded-none transform -rotate-[2deg] transition-transform hover:rotate-0"
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-[2deg] transition-transform hover:rotate-0"
                 >
                   Archive
                 </Button>
@@ -170,7 +170,7 @@ export default function Hero({ data }: { data: any }) {
                 rel="noopener noreferrer"
                 className="transform hover:rotate-6 transition-transform"
               >
-                <div className="bg-black text-white p-3 flex items-center justify-center w-10 h-10">
+                <div className="bg-black dark:bg-white text-white dark:text-black p-3 flex items-center justify-center w-10 h-10">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -188,7 +188,7 @@ export default function Hero({ data }: { data: any }) {
                 rel="noopener noreferrer"
                 className="transform hover:rotate-6 transition-transform"
               >
-                <div className="bg-black text-white p-3 flex items-center justify-center w-10 h-10">
+                <div className="bg-black dark:bg-white text-white dark:text-black p-3 flex items-center justify-center w-10 h-10">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -204,15 +204,6 @@ export default function Hero({ data }: { data: any }) {
           </div>
         </div>
       </motion.div>
-
-      <div
-        className="fixed w-12 h-12 rounded-full bg-black mix-blend-difference pointer-events-none z-50"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      />
     </section>
   );
 }

@@ -9,7 +9,7 @@ import BackButton from "@/app/_components/back-button";
 
 export default function AboutPage() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
 
       {/* Back Button with Suspense */}
@@ -17,7 +17,7 @@ export default function AboutPage() {
         fallback={
           <div className="absolute top-4 left-4 z-20">
             <Link href="/">
-              <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+              <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-mono text-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors transform hover:-rotate-1">
                 ← Back to Home
               </button>
             </Link>
@@ -34,7 +34,7 @@ export default function AboutPage() {
         transition={{ duration: 0.8 }}
       >
         {/* Title Section */}
-        <div className="border-4 border-black p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
+        <div className="border-4 border-black dark:border-white p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
             About Us
           </h1>
@@ -43,7 +43,7 @@ export default function AboutPage() {
         {/* Main Content */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
           <motion.div
-            className="border-l-4 border-black pl-6 transform rotate-1 flex-1"
+            className="border-l-4 border-black dark:border-white pl-6 transform rotate-1 flex-1"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -80,7 +80,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="border-l-4 md:border-l-0 md:border-r-4 border-black pl-4 md:pl-0 md:pr-4">
+            <div className="border-l-4 md:border-l-0 md:border-r-4 border-black dark:border-white pl-4 md:pl-0 md:pr-4">
               <div className="text-sm font-mono mb-1 uppercase tracking-wider text-gray-600">
                 When & Where
               </div>
@@ -128,7 +128,7 @@ Monthly-ish basis`}
           {/* First Row */}
           <div className="space-y-8">
             {/* Massi Card */}
-            <div className="border-4 border-black p-8 transform hover:-rotate-1 transition-transform">
+            <div className="border-4 border-black dark:border-white p-8 transform hover:-rotate-1 transition-transform">
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-square mb-6">
                   <Image
@@ -169,7 +169,7 @@ Monthly-ish basis`}
             </div>
 
             {/* Ale Card */}
-            <div className="border-4 border-black p-8 transform hover:rotate-1 transition-transform">
+            <div className="border-4 border-black dark:border-white p-8 transform hover:rotate-1 transition-transform">
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-square mb-6">
                   <Image
@@ -204,7 +204,7 @@ Monthly-ish basis`}
           {/* Second Row */}
           <div className="space-y-8">
             {/* Rick Card */}
-            <div className="border-4 border-black p-8 transform hover:-rotate-1 transition-transform">
+            <div className="border-4 border-black dark:border-white p-8 transform hover:-rotate-1 transition-transform">
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-square mb-6">
                   <Image
@@ -243,7 +243,7 @@ Monthly-ish basis`}
             </div>
 
             {/* Edu Card */}
-            <div className="border-4 border-black p-8 transform hover:rotate-1 transition-transform">
+            <div className="border-4 border-black dark:border-white p-8 transform hover:rotate-1 transition-transform">
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-square mb-6">
                   <Image

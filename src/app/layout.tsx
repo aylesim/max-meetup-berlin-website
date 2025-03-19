@@ -2,6 +2,8 @@ import Footer from "@/app/_components/footer";
 import { CMS_NAME } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Navbar } from "@/components/navbar";
 
 import "./globals.css";
 
@@ -31,9 +33,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
+    <html lang="en" suppressHydrationWarning className="w-full h-full">
+      <body className={`${inter.className} w-full h-full`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          <div className="min-h-screen w-full">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

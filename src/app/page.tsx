@@ -1,4 +1,3 @@
-import Container from "@/app/_components/container";
 import Hero from "@/app/_components/hero";
 import { getHomeData, getNextMeetup } from "@/lib/api";
 
@@ -20,10 +19,8 @@ export default async function Index() {
   };
 
   return (
-    <main>
-      <Container>
-        <Hero data={data} />
-      </Container>
+    <main className="w-full h-full">
+      <Hero data={data} />
     </main>
   );
 }

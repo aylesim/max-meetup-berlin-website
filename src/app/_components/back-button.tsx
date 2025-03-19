@@ -10,7 +10,7 @@ export default function BackButton() {
   return (
     <div className="absolute top-4 left-4 z-20">
       <Link href={fromArchive ? "/archive" : "/"}>
-        <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+        <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-mono text-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors transform hover:-rotate-1">
           ← Back to {fromArchive ? "Archive" : "Home"}
         </button>
       </Link>

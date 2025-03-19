@@ -16,7 +16,7 @@ function BackButton() {
   return (
     <div className="absolute top-4 left-4 z-20">
       <Link href={fromArchive ? "/archive" : "/"}>
-        <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+        <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-mono text-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors transform hover:-rotate-1">
           ← Back to {fromArchive ? "Archive" : "Home"}
         </button>
       </Link>
@@ -40,7 +40,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white px-4 pt-16 pb-16">
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10" />
 
       {/* Back Button with Suspense */}
@@ -48,7 +48,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         fallback={
           <div className="absolute top-4 left-4 z-20">
             <Link href="/">
-              <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
+              <button className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-mono text-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors transform hover:-rotate-1">
                 ← Back to Home
               </button>
             </Link>
@@ -65,7 +65,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         transition={{ duration: 0.8 }}
       >
         {/* Title Section */}
-        <div className="border-4 border-black p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
+        <div className="border-4 border-black dark:border-white p-6 md:p-8 lg:p-10 mb-8 transform -rotate-1">
           <h1 className="text-[min(7.5vw,5rem)] md:text-[min(8vw,6.5rem)] font-bold mb-6 md:mb-8 uppercase tracking-[-0.06em] w-full whitespace-normal leading-[1.3] flex-shrink-0">
             {data.title}
           </h1>
@@ -76,7 +76,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
 
         {/* Featured Speakers List */}
         <motion.div
-          className="mb-8 border-r-4 border-black pr-3 transform -rotate-1"
+          className="mb-8 border-r-4 border-black dark:border-white pr-3 transform -rotate-1"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
@@ -88,20 +88,20 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             {[0, 1, 2, 3, 4, 5, 6].map((index) => {
               const speakerIndex = index as SpeakerIndex;
               const speakerKey = `Speaker_${speakerIndex}` as const;
-              const nameKey = `name_${speakerIndex}` as const;
+              const speakerNameKey = `name_${speakerIndex}` as const;
               const activityTitleKey = "activityTitle" as const;
               const speaker = data[speakerKey];
-              if (!speaker || !speaker[nameKey]) return null;
+              if (!speaker || !speaker[speakerNameKey]) return null;
 
               return (
                 <span
                   key={index}
-                  className="inline-block bg-black text-white px-3 py-1 text-sm font-mono transform hover:rotate-1 transition-transform cursor-pointer"
+                  className="inline-block bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-sm font-mono transform hover:rotate-1 transition-transform cursor-pointer"
                   onClick={() => scrollToSpeaker(index)}
                 >
-                  {speaker[nameKey]}
+                  {speaker[speakerNameKey]}
                   {speaker[activityTitleKey] && (
-                    <span className="ml-1 text-gray-300">
+                    <span className="ml-1 text-gray-300 dark:text-gray-500">
                       — {speaker[activityTitleKey]}
                     </span>
                   )}
@@ -115,7 +115,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         <div className="flex flex-col gap-4">
           {/* Time and Location Section */}
           <motion.div
-            className="border-l-4 border-black pl-3 transform rotate-1"
+            className="border-l-4 border-black dark:border-white pl-3 transform rotate-1"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -133,7 +133,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
           {/* Event Link Section */}
           {data.event_link && (
             <motion.div
-              className="border-l-4 border-black pl-3 transform -rotate-1"
+              className="border-l-4 border-black dark:border-white pl-3 transform -rotate-1"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -141,7 +141,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               <Link
                 href={data.event_link}
                 target="_blank"
-                className="inline-block bg-black text-white px-6 py-3 font-mono text-lg hover:bg-gray-800 transition-colors transform hover:-rotate-1"
+                className="inline-block bg-black dark:bg-white text-white dark:text-black px-6 py-3 font-mono text-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors transform hover:-rotate-1"
               >
                 Reserve a Spot →
               </Link>
@@ -150,7 +150,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
 
           {/* Schedule Section */}
           <motion.div
-            className="border-l-4 border-black pl-3 transform -rotate-1"
+            className="border-l-4 border-black dark:border-white pl-3 transform -rotate-1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
@@ -163,14 +163,14 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                 <h2 className="text-2xl font-bold uppercase tracking-tight">
                   Schedule
                 </h2>
-                <span className="text-sm font-mono text-gray-600">
+                <span className="text-sm font-mono text-gray-600 dark:text-gray-300">
                   {isScheduleExpanded ? "(click to hide)" : "(click to show)"}
                 </span>
               </div>
               <span
                 className={`transform transition-transform duration-300 ${
                   isScheduleExpanded ? "rotate-180" : ""
-                } text-gray-600`}
+                } text-gray-600 dark:text-gray-300`}
               >
                 ▼
               </span>
@@ -191,7 +191,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
 
         {/* What to Expect Section */}
         <motion.div
-          className="mt-16 border-t-4 border-black pt-8 transform rotate-1"
+          className="mt-16 border-t-4 border-black dark:border-white pt-8 transform rotate-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -218,7 +218,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             {[0, 1, 2, 3, 4, 5, 6].map((index) => {
               const speakerIndex = index as SpeakerIndex;
               const speakerKey = `Speaker_${speakerIndex}` as const;
-              const nameKey = `name_${speakerIndex}` as const;
+              const speakerNameKey = `name_${speakerIndex}` as const;
               const pictureKey = `picture_${speakerIndex}` as const;
               const bioKey = `bio_${speakerIndex}` as const;
               const link1Key = `link1_${speakerIndex}` as const;
@@ -226,7 +226,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               const shortdescriptionKey = "shortdescription" as const;
               const activityTitleKey = "activityTitle" as const;
               const speaker = data[speakerKey];
-              if (!speaker || !speaker[nameKey]) return null;
+              if (!speaker || !speaker[speakerNameKey]) return null;
 
               return (
                 <motion.div
@@ -234,7 +234,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   ref={(el) => {
                     speakerRefs.current[index] = el;
                   }}
-                  className="border-4 border-black p-4 transition-all"
+                  className="border-4 border-black dark:border-white p-4 transition-all"
                   initial={{
                     opacity: 0,
                     y: 20,
@@ -251,10 +251,10 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                   <div className="flex gap-4">
                     {/* Left side - Image */}
                     <div className="w-1/3 flex-shrink-0">
-                      <div className="aspect-square overflow-hidden border-2 border-black">
+                      <div className="aspect-square overflow-hidden border-2 border-black dark:border-white">
                         <Image
                           src={speaker[pictureKey] ?? ""}
-                          alt={speaker[nameKey] ?? ""}
+                          alt={speaker[speakerNameKey] ?? ""}
                           width={150}
                           height={150}
                           className="w-full h-full object-cover"
@@ -265,7 +265,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                     {/* Right side - Content */}
                     <div className="flex-1 flex flex-col">
                       <h3 className="font-mono text-xl font-bold">
-                        {speaker[nameKey]}
+                        {speaker[speakerNameKey]}
                       </h3>
 
                       {speaker[activityTitleKey] && (
@@ -280,7 +280,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                         </p>
                       )}
 
-                      <p className="text-xs font-mono mt-1 mb-2 text-gray-700">
+                      <p className="text-xs font-mono mt-1 mb-2 text-gray-700 dark:text-gray-300">
                         {speaker[bioKey]}
                       </p>
 
@@ -289,7 +289,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                           <Link
                             href={speaker[link1Key] as string}
                             target="_blank"
-                            className="bg-black text-white px-2 py-1 font-mono text-xs hover:bg-gray-800 transition-colors"
+                            className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                           >
                             Website
                           </Link>
@@ -298,7 +298,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
                           <Link
                             href={speaker[link2Key] as string}
                             target="_blank"
-                            className="bg-black text-white px-2 py-1 font-mono text-xs hover:bg-gray-800 transition-colors"
+                            className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                           >
                             Link 2
                           </Link>

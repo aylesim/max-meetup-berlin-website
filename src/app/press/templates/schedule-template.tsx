@@ -25,11 +25,8 @@ export default function ScheduleTemplate({ data }: { data: MeetupWithSlug }) {
         <div className="mt-auto pt-4 border-t-4 border-black">
           <div className="flex justify-between items-center">
             <div>
-              <div className="font-mono text-sm">
-                {data.when_where?.split("\n").slice(0, 1).join("\n")}
-              </div>
-              <div className="font-mono text-sm">
-                {data.when_where?.split("\n").slice(1, 2).join("\n")}
+              <div className="font-mono text-sm whitespace-pre-wrap">
+                {data.when_where}
               </div>
             </div>
 

@@ -24,7 +24,7 @@ export default function PosterTemplate({ data }: { data: MeetupWithSlug }) {
             MAX BERLIN NETWORK
           </h2>
           <div className="font-mono text-lg transform rotate-0 whitespace-pre-wrap leading-tight">
-            {data.when_where?.split("\n").slice(0, 2).join("\n")}
+            {data.when_where}
           </div>
         </div>
 

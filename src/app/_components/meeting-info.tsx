@@ -26,6 +26,18 @@ function BackButton() {
 
 export default function MeetingInfo({ data }: { data: MeetingData }) {
   const [isScheduleExpanded, setIsScheduleExpanded] = useState(false);
+  const speakerRefs = React.useRef<{ [key: number]: HTMLDivElement | null }>(
+    {}
+  );
+
+  const scrollToSpeaker = (index: number) => {
+    if (speakerRefs.current[index]) {
+      speakerRefs.current[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white text-black px-4 pt-16 pb-16">
@@ -61,6 +73,43 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
             {data.subtitle}
           </div>
         </div>
+
+        {/* Featured Speakers List */}
+        <motion.div
+          className="mb-8 border-r-4 border-black pr-3 transform -rotate-1"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <h2 className="text-2xl font-bold mb-2 uppercase tracking-tight">
+            Featuring
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {[0, 1, 2, 3, 4, 5, 6].map((index) => {
+              const speakerIndex = index as SpeakerIndex;
+              const speakerKey = `Speaker_${speakerIndex}` as const;
+              const nameKey = `name_${speakerIndex}` as const;
+              const activityTitleKey = "activityTitle" as const;
+              const speaker = data[speakerKey];
+              if (!speaker || !speaker[nameKey]) return null;
+
+              return (
+                <span
+                  key={index}
+                  className="inline-block bg-black text-white px-3 py-1 text-sm font-mono transform hover:rotate-1 transition-transform cursor-pointer"
+                  onClick={() => scrollToSpeaker(index)}
+                >
+                  {speaker[nameKey]}
+                  {speaker[activityTitleKey] && (
+                    <span className="ml-1 text-gray-300">
+                      — {speaker[activityTitleKey]}
+                    </span>
+                  )}
+                </span>
+              );
+            })}
+          </div>
+        </motion.div>
 
         {/* Time and Location + Schedule Section */}
         <div className="flex flex-col gap-4">
@@ -165,7 +214,7 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
             Featured Speakers
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             {[0, 1, 2, 3, 4, 5, 6].map((index) => {
               const speakerIndex = index as SpeakerIndex;
               const speakerKey = `Speaker_${speakerIndex}` as const;
@@ -182,48 +231,78 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               return (
                 <motion.div
                   key={index}
-                  className="border-4 border-black p-6 transform hover:rotate-1 transition-transform"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  ref={(el) => (speakerRefs.current[index] = el)}
+                  className="border-4 border-black p-4 transition-all"
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                    rotate: index % 2 === 0 ? 0.5 : -0.5,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    rotate: index % 2 === 0 ? 0.5 : -0.5,
+                  }}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                 >
-                  <p className="text-2xl font-mono font-bold mb-2 pb-4">
-                    {speaker[activityTitleKey] || ""}
-                  </p>
-                  <p className="text-l font-mono font-bold mb-2 pb-4">
-                    {speaker[shortdescriptionKey] || ""}
-                  </p>
-                  <Image
-                    src={speaker[pictureKey] ?? ""}
-                    alt={speaker[nameKey] ?? ""}
-                    width={200}
-                    height={200}
-                    className="mb-4 w-full object-cover"
-                  />
-                  <h3 className="font-mono text-2xl font-bold mb-2">
-                    {speaker[nameKey]}
-                  </h3>
-
-                  <p className="font-mono text-sm mb-4">{speaker[bioKey]}</p>
                   <div className="flex gap-4">
-                    {speaker[link1Key] && (
-                      <Link
-                        href={speaker[link1Key] as string}
-                        target="_blank"
-                        className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                      >
-                        Website
-                      </Link>
-                    )}
-                    {speaker[link2Key] && (
-                      <Link
-                        href={speaker[link2Key] as string}
-                        target="_blank"
-                        className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors"
-                      >
-                        Link 2
-                      </Link>
-                    )}
+                    {/* Left side - Image */}
+                    <div className="w-1/3 flex-shrink-0">
+                      <div className="aspect-square overflow-hidden border-2 border-black">
+                        <Image
+                          src={speaker[pictureKey] ?? ""}
+                          alt={speaker[nameKey] ?? ""}
+                          width={150}
+                          height={150}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Right side - Content */}
+                    <div className="flex-1 flex flex-col">
+                      <h3 className="font-mono text-xl font-bold">
+                        {speaker[nameKey]}
+                      </h3>
+
+                      {speaker[activityTitleKey] && (
+                        <p className="text-base font-mono font-bold">
+                          {speaker[activityTitleKey]}
+                        </p>
+                      )}
+
+                      {speaker[shortdescriptionKey] && (
+                        <p className="text-sm font-mono mt-1">
+                          {speaker[shortdescriptionKey]}
+                        </p>
+                      )}
+
+                      <p className="text-xs font-mono mt-1 mb-2 text-gray-700">
+                        {speaker[bioKey]}
+                      </p>
+
+                      <div className="flex gap-2 mt-auto">
+                        {speaker[link1Key] && (
+                          <Link
+                            href={speaker[link1Key] as string}
+                            target="_blank"
+                            className="bg-black text-white px-2 py-1 font-mono text-xs hover:bg-gray-800 transition-colors"
+                          >
+                            Website
+                          </Link>
+                        )}
+                        {speaker[link2Key] && (
+                          <Link
+                            href={speaker[link2Key] as string}
+                            target="_blank"
+                            className="bg-black text-white px-2 py-1 font-mono text-xs hover:bg-gray-800 transition-colors"
+                          >
+                            Link 2
+                          </Link>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               );

@@ -43,7 +43,7 @@ export default async function ArchivePage() {
                 {meetup.when_where?.split("\n")[0] || ""}
               </p>
               <p className="mb-6 text-sm line-clamp-3">
-                {meetup.what_to_expect || meetup.description}
+                {meetup.subtitle || meetup.description || meetup.what_to_expect}
               </p>
 
               <div className="flex flex-wrap gap-3 mb-6">

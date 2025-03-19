@@ -155,26 +155,20 @@ export default function AboutPage() {
                   Massimiliano Cerioni
                 </h3>
                 <p className="font-mono text-sm mb-4">
-                  Massimiliano Cerioni (1986, Italy) is a composer and sound
-                  engineer based in Berlin. He holds an MA in electronic music
-                  from the Alfredo Casella Conservatory of Music (L'Aquila, IT)
-                  and is also a sound artist, educator, and Max Certified
-                  Trainer. As a researcher and developer affiliated with the
-                  Alfredo Casella Conservatory of Music of L'Aquila (Italy), he
-                  works at the EAR Research Project, dedicated to expanding the
-                  capabilities of the AI system °'°Kobi. Cerioni's work spans
-                  music, sound design, creative coding, audiovisual
-                  installations, generative algorithms, DSP for music
-                  applications, custom software development, augmented
-                  instrument design, and performance. In 2015, he won 1st prize
-                  at the National Arts Prize 'Premio Abbado.' His works have
-                  been featured at festivals such as CTM, ICMC, Tempo Reale,
-                  Artescienza, Kunsttage Basel, and the Psychedelic Film and
-                  Music Festival. He collaborates with various artists and is
-                  part of the collectives Radius, Wasch, and Max Berlin Network.
-                  He releases his music with Elli Records (France), and
-                  distributes his Max For live Devices with Isotonik Studio,
-                  under the name Culto.
+                  Massimiliano Cerioni (1986, Italy) is a composer, sound
+                  engineer, educator, and Max Certified Trainer based in Berlin.
+                  He holds an MA in electronic music from the A. Casella
+                  Conservatory – L'Aquila, IT, where he also researches AI for
+                  the EAR project. His work spans music, sound design, creative
+                  coding, audiovisual installations, generative algorithms, DSP,
+                  software development, augmented instruments, and performance.
+                  In 2015, he won 1st prize at the National Arts Prize 'Premio
+                  Abbado.' His works have been featured at CTM, ICMC Athens,
+                  Tempo Reale, Artescienza, Kunsttage Basel, Chilean Conexión,
+                  and the Psychedelic Film and Music Festival NYC. He is part of
+                  Radius Collective, Wasch Berlin, and Max Berlin Network. He
+                  releases music with Elli Records and distributes Culto M4L
+                  Devices via Isotonik Studios.
                 </p>
                 <a
                   href="https://cerionimusic.com/"

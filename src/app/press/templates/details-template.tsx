@@ -46,7 +46,7 @@ export default function DetailsTemplate({ data }: { data: MeetupWithSlug }) {
                   className="bg-black text-white px-3 py-2 transform hover:rotate-1 transition-transform"
                 >
                   <span className="font-bold">{name}</span>
-                  {speaker.activityTitle && (
+                  {typeof speaker === "object" && speaker.activityTitle && (
                     <span className="text-xs font-mono text-gray-300 ml-2">
                       {speaker.activityTitle}
                     </span>

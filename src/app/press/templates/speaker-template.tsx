@@ -61,13 +61,13 @@ export default function SpeakerTemplate({
 
             {/* Basic Info Column */}
             <div className="w-1/2 flex flex-col">
-              {speaker.activityTitle && (
+              {typeof speaker === "object" && speaker.activityTitle && (
                 <h1 className="text-lg font-bold mb-2 font-mono transform -rotate-2 break-words">
                   {speaker.activityTitle}
                 </h1>
               )}
 
-              {speaker.shortdescription && (
+              {typeof speaker === "object" && speaker.shortdescription && (
                 <p className="text-xs font-mono mb-2 border-l-4 border-black pl-2 break-words">
                   {speaker.shortdescription}
                 </p>

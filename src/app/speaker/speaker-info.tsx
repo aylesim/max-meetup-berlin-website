@@ -108,7 +108,7 @@ export default function SpeakerInfo({ data }: { data: MeetingData }) {
                     animate={{ opacity: 1, x: 0 }}
                   >
                     <h1 className="text-4xl font-bold mb-6 font-mono transform -rotate-2">
-                      {currentSpeaker.activityTitle}
+                      {currentSpeaker.activityTitle || ""}
                     </h1>
 
                     {currentSpeaker.shortdescription && (

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <div className="min-h-screen w-full">{children}</div>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

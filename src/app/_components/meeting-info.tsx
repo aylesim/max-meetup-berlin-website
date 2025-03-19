@@ -231,7 +231,9 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
               return (
                 <motion.div
                   key={index}
-                  ref={(el) => (speakerRefs.current[index] = el)}
+                  ref={(el) => {
+                    speakerRefs.current[index] = el;
+                  }}
                   className="border-4 border-black p-4 transition-all"
                   initial={{
                     opacity: 0,

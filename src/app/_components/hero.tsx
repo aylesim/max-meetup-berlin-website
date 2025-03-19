@@ -65,6 +65,10 @@ export default function Hero({ data }: { data: any }) {
     ? data.nextMeetupData.when_where
     : data.next_meetup;
 
+  // Forza il processo dei line break
+  const nextMeetupLines =
+    nextMeetupInfo?.split(/\r?\n/).filter((line: string) => line.trim()) || [];
+
   // Use the dynamic slug if available
   const meetingUrl = data.nextMeetupData
     ? `/meeting/${data.nextMeetupData.slug}`
@@ -94,7 +98,13 @@ export default function Hero({ data }: { data: any }) {
             <div className="text-6xl font-bold mb-2 uppercase tracking-tight">
               {data.next_meetup_0}
             </div>
-            <div className="font-mono mb-6">{nextMeetupInfo}</div>
+            <div className="font-mono mb-6 space-y-1">
+              {nextMeetupLines.map((line: string, index: number) => (
+                <div key={index} className="text-base">
+                  {line.trim()}
+                </div>
+              ))}
+            </div>
             <div className="relative">
               {data.isFlashy &&
                 arrows.map((arrow, i) => (

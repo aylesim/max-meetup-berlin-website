@@ -5,22 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-
-// Client component for the back button
-function BackButton() {
-  const searchParams = useSearchParams();
-  const fromArchive = searchParams.get("from") === "archive";
-
-  return (
-    <div className="absolute top-4 left-4 z-20">
-      <Link href={fromArchive ? "/archive" : "/"}>
-        <button className="bg-black text-white px-4 py-2 font-mono text-sm hover:bg-gray-800 transition-colors transform hover:-rotate-1">
-          ← Back to {fromArchive ? "Archive" : "Home"}
-        </button>
-      </Link>
-    </div>
-  );
-}
+import BackButton from "@/app/_components/back-button";
 
 export default function AboutPage() {
   return (
@@ -99,10 +84,12 @@ export default function AboutPage() {
               <div className="text-sm font-mono mb-1 uppercase tracking-wider text-gray-600">
                 When & Where
               </div>
-              <div className="font-mono text-base">
-                Betahaus, Mitte
-                <br />
-                Monthly-ish basis
+              <div className="font-mono">
+                <div className="text-base whitespace-pre-wrap">
+                  {`Betahaus
+Mitte
+Monthly-ish basis`}
+                </div>
               </div>
             </div>
 

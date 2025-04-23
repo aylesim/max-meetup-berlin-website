@@ -1,6 +1,7 @@
 import { getAllMeetups } from "@/lib/api";
 import Link from "next/link";
 import PressMeetupList from "./press-meetup-list";
+import CustomTextGenerator from "./custom-text-generator";
 
 export default async function PressPage() {
   const meetups = await getAllMeetups();
@@ -24,6 +25,13 @@ export default async function PressPage() {
           Click on any meetup to preview and download Instagram-ready
           promotional images
         </p>
+
+        {/* Custom Text Generator Tab */}
+        <div className="mb-16">
+          <CustomTextGenerator />
+        </div>
+
+        <hr className="border-t-2 border-black mb-16" />
 
         <PressMeetupList meetups={sortedMeetups} />
       </div>

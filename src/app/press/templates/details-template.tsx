@@ -32,7 +32,7 @@ export default function DetailsTemplate({ data }: { data: MeetupWithSlug }) {
           <h2 className="text-xl font-bold uppercase font-mono mb-2 transform -rotate-1 bg-black text-white inline-block px-3 py-1">
             Speakers
           </h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 leading-4">
             {availableSpeakers.map((item) => {
               if (!item) return null;
               const { speaker, index } = item;

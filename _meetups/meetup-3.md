@@ -4,15 +4,15 @@ title: Meetup *3
 subtitle: "Complex Systems: shaping dramaturgies in oceans of samples and clouds
   of sound"
 when_where: |
-  Saturday, June the 3th 2025 
+  Saturday, May the 3th 2025 
   Betahaus, Lobeckstraße 30, 10969 Berlin
   10969 Berlin 3:00 PM - 7:00 PM
 schedule: |-
   3:00 pm | Doors open 
   3:15 pm | Betahaus & Max Meetup Berlin presentation (Massi & Edu) 
-  3:30 pm | Marco Accardi Presentation
+  3:30 pm | Riccardo Sellan Presentation
   4:00 pm | Coffee Break 
-  4:10 pm | Riccardo Sellan Presentation
+  4:10 pm | Marco Accardi Presentation 
   4:40 pm | Coffee Break 
   4:50 pm | Olle Holmberg Presentation
   5:20 pm | Q&A 
@@ -37,6 +37,20 @@ what_to_expect: >-
   We're excited to welcome three speakers to the stage: Riccardo Sellan, Marco
   Accardi, and Olle Holmberg
 Speaker_0:
+  activityTitle: Lambda walkthrough
+  shortdescription: An exploration of the Lambda Max for Live device, focusing on
+    its core architecture, key programming decisions, challenges encountered
+    during development, and future implementations.
+  name_0: Riccardo Sellan
+  picture_0: /assets/rick.webp
+  bio_0: Riccardo Sellan, after graduating in Electronic Music from the Venice
+    Conservatory, began independently developing audio software for sound
+    design, multimedia installations, and performances. He is currently working
+    as a technical sound designer for NevaXR and Tilde Sound Art. Based in
+    Berlin, he continues his research into creating innovative tools and
+    software in the field of sound.
+  link1_0: https://www.instagram.com/riccardo.sellan
+Speaker_1:
   activityTitle: "The Dramaturgy of Creative Coding: Storytelling at the
     Intersection of Art and Technology"
   shortdescription: Explore how technology and art converge to create engaging,
@@ -45,9 +59,9 @@ Speaker_0:
     with digital media through complex systems built with Max, he highlights how
     creative coding and technology influence both structure and aesthetic
     decisions.
-  name_0: "Marco Accardi "
-  picture_0: /assets/marco_accardi_pic.jpg
-  bio_0: Marco Accardi is a computational artist, independent researcher, and
+  name_1: "Marco Accardi "
+  picture_1: /assets/marco_accardi_pic.jpg
+  bio_1: Marco Accardi is a computational artist, independent researcher, and
     software engineer with roots in classical and electronic music. As Head of
     Tech at Anecoica Studio, he helps guide a vision for the future of art that
     merges emotion with innovation, building bridges between human and
@@ -58,20 +72,6 @@ Speaker_0:
     Arizona. Operating where science, art, and code converge, Marco’s current
     focus is on crafting systems that transform data from information into
     expression.
-Speaker_1:
-  activityTitle: Lambda walkthrough
-  shortdescription: An exploration of the Lambda Max for Live device, focusing on
-    its core architecture, key programming decisions, challenges encountered
-    during development, and future implementations.
-  name_1: Riccardo Sellan
-  picture_1: /assets/rick.webp
-  bio_1: Riccardo Sellan, after graduating in Electronic Music from the Venice
-    Conservatory, began independently developing audio software for sound
-    design, multimedia installations, and performances. He is currently working
-    as a technical sound designer for NevaXR and Tilde Sound Art. Based in
-    Berlin, he continues his research into creating innovative tools and
-    software in the field of sound.
-  link1_1: https://www.instagram.com/riccardo.sellan
 Speaker_2:
   activityTitle: Shipwreck, a tool for navigating a multitude of left-behind sounds
   shortdescription: Olle Holmberg presents Shipwreck, a Max sampler for diving

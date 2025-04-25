@@ -19,7 +19,7 @@ export default function PosterTemplate({ data }: { data: MeetupWithSlug }) {
         </div>
 
         {/* Middle area - Time and Location */}
-        <div className="transform rotate-1 bg-white/90 w-11/12 mx-auto">
+        <div className="transform rotate-1 w-11/12 mx-auto">
           <h2 className="text-4xl font-bold mb-3 uppercase tracking-tight text-black">
             MAX BERLIN NETWORK
           </h2>

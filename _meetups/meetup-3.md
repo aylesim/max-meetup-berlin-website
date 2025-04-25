@@ -19,16 +19,23 @@ schedule: |-
   6:00 pm | Collective Patching Session & Networking 
   7:00 pm | End
 what_to_expect: >-
-  We are back with a new event titled "Complex Systems: shaping dramaturgies in
-  oceans of samples and clouds of sound". 
+  Complexity is an ever-present force in the world of technological art. 
 
-  This edition dives deep into how complex systems and digital tools shape
-  artistic narratives and sonic exploration. 
 
-  Our three guests will guide us through different creative ecosystems where
-  code, sound, and dramaturgy converge: from storytelling through creative
-  coding, to the architecture of a Max for Live device, to the navigation of
-  massive sound archives with swarm-like tools.
+  Working with Max alongside various hardware and software tools not only opens
+  the door to rich, intricate sonic and expressive possibilities, but also
+  demands engagement with a sprawling landscape of data and parameters. 
+
+
+  In this session, we will navigate these challenges and potentials through
+  three distinct lenses: sculpting sound with granular synthesis in the Lambda
+  device, exploring how technology and technique shape dramaturgy and
+  aesthetics, and diving into a vast archive of forgotten sounds with the
+  Shipwreck sampler. 
+
+
+  We're excited to welcome three speakers to the stage: Riccardo Sellan, Marco
+  Accardi, and Olle Holmberg
 Speaker_0:
   activityTitle: "The Dramaturgy of Creative Coding: Storytelling at the
     Intersection of Art and Technology"

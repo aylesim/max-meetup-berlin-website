@@ -13,6 +13,7 @@ const CustomTextTemplate = dynamic(
 export default function CustomTextGenerator() {
   const [customText, setCustomText] = useState("");
   const [rotation, setRotation] = useState(-1);
+  const [fontSize, setFontSize] = useState(8); // Default size (current size is 8)
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
@@ -34,13 +35,6 @@ export default function CustomTextGenerator() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6 uppercase font-mono text-center">
-        Custom Text Generator
-      </h2>
-      <p className="text-lg text-center mb-8 font-mono">
-        Create Instagram-ready images with your custom text
-      </p>
-
       <div className="max-w-xl mx-auto mb-6">
         <div className="mb-4">
           <label
@@ -91,6 +85,36 @@ export default function CustomTextGenerator() {
             Reset to 0°
           </Button>
         </div>
+
+        <div className="mb-6">
+          <label
+            htmlFor="fontSizeSlider"
+            className="block text-lg font-bold font-mono mb-2"
+          >
+            Font Size: {fontSize}
+          </label>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-mono">4</span>
+            <input
+              id="fontSizeSlider"
+              type="range"
+              min="4"
+              max="12"
+              step="1"
+              value={fontSize}
+              onChange={(e) => setFontSize(parseInt(e.target.value))}
+              className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <span className="text-sm font-mono">12</span>
+          </div>
+          <Button
+            onClick={() => setFontSize(8)}
+            className="mt-2 bg-black text-white hover:bg-gray-800 text-xs"
+            size="sm"
+          >
+            Reset to Default
+          </Button>
+        </div>
       </div>
 
       <div className="mb-12">
@@ -114,7 +138,11 @@ export default function CustomTextGenerator() {
             className="w-[600px] h-[600px] relative bg-white overflow-visible"
             style={{ aspectRatio: "1/1" }}
           >
-            <CustomTextTemplate text={customText} rotation={rotation} />
+            <CustomTextTemplate
+              text={customText}
+              rotation={rotation}
+              fontSize={fontSize}
+            />
           </div>
         </div>
       </div>

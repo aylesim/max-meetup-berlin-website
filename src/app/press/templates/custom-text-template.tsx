@@ -5,10 +5,15 @@ import { motion } from "framer-motion";
 export default function CustomTextTemplate({
   text,
   rotation = -1,
+  fontSize = 8,
 }: {
   text: string;
   rotation?: number;
+  fontSize?: number;
 }) {
+  // Map fontSize (4-12) to actual rem values (2rem - 6rem)
+  const fontSizeRem = 2 + (fontSize - 4) * (4 / 8);
+
   return (
     <div className="w-full h-full relative bg-white text-black">
       {/* Content Container */}
@@ -19,11 +24,12 @@ export default function CustomTextTemplate({
           style={{ transform: `rotate(${rotation}deg)` }}
         >
           <h1
-            className="text-6xl md:text-7xl lg:text-8xl font-bold text-center uppercase tracking-tighter leading-none"
+            className="font-bold text-center uppercase tracking-tighter leading-none"
             style={{
               overflowWrap: "break-word",
               hyphens: "auto",
               maxHeight: "100%",
+              fontSize: `${fontSizeRem}rem`,
             }}
           >
             {text || "YOUR CUSTOM TEXT HERE"}

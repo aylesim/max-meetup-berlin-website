@@ -21,10 +21,6 @@ export default async function PressPage() {
         <h1 className="text-5xl md:text-6xl font-bold mb-10 text-center uppercase tracking-tight">
           Press Materials
         </h1>
-        <p className="text-xl text-center mb-12 font-mono">
-          Click on any meetup to preview and download Instagram-ready
-          promotional images
-        </p>
 
         {/* Custom Text Generator Tab */}
         <div className="mb-16">

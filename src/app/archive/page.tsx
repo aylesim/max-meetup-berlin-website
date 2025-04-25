@@ -5,13 +5,9 @@ import { getAllMeetups } from "@/lib/api";
 export default async function ArchivePage() {
   const meetups = await getAllMeetups();
 
-  // Sort meetups by date (assuming the slug contains the date in format YYYY-MM-DD)
+  // Sort meetups by title
   const sortedMeetups = [...meetups].sort((a, b) => {
-    // Extract date from slug if it follows the pattern YYYY-MM-DD
-    const dateA = a.slug.match(/(\d{4}-\d{2}-\d{2})/)?.[1] || "";
-    const dateB = b.slug.match(/(\d{4}-\d{2}-\d{2})/)?.[1] || "";
-    // Sort in descending order (newest first)
-    return dateB.localeCompare(dateA);
+    return a.title.localeCompare(b.title);
   });
 
   return (

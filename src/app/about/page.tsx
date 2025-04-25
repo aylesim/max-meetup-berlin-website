@@ -87,7 +87,6 @@ export default function AboutPage() {
               <div className="font-mono">
                 <div className="text-base whitespace-pre-wrap">
                   {`Betahaus
-Mitte
 Monthly-ish basis`}
                 </div>
               </div>

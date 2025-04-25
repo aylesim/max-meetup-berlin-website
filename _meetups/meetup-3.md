@@ -3,6 +3,13 @@ is_next: true
 title: Meetup *3
 subtitle: "Complex Systems: shaping dramaturgies in oceans of samples and clouds
   of sound"
+description: 'We are back with a new event titled "Complex Systems: shaping
+  dramaturgies in oceans of samples and clouds of sound". This edition dives
+  deep into how complex systems and digital tools shape artistic narratives and
+  sonic exploration. Our three guests will guide us through different creative
+  ecosystems where code, sound, and dramaturgy converge: from storytelling
+  through creative coding, to the architecture of a Max for Live device, to the
+  navigation of massive sound archives with swarm-like tools.'
 when_where: |
   Saturday, June the 3th 2025 
   Betahaus, Lobeckstraße 30, 10969 Berlin

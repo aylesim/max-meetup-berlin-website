@@ -18,13 +18,17 @@ schedule: |-
   5:20 pm | Q&A 
   6:00 pm | Collective Patching Session & Networking 
   7:00 pm | End
-what_to_expect: 'We are back with a new event titled "Complex Systems: shaping
-  dramaturgies in oceans of samples and clouds of sound". This edition dives
-  deep into how complex systems and digital tools shape artistic narratives and
-  sonic exploration. Our three guests will guide us through different creative
-  ecosystems where code, sound, and dramaturgy converge: from storytelling
-  through creative coding, to the architecture of a Max for Live device, to the
-  navigation of massive sound archives with swarm-like tools.'
+what_to_expect: >-
+  We are back with a new event titled "Complex Systems: shaping dramaturgies in
+  oceans of samples and clouds of sound". 
+
+  This edition dives deep into how complex systems and digital tools shape
+  artistic narratives and sonic exploration. 
+
+  Our three guests will guide us through different creative ecosystems where
+  code, sound, and dramaturgy converge: from storytelling through creative
+  coding, to the architecture of a Max for Live device, to the navigation of
+  massive sound archives with swarm-like tools.
 Speaker_0:
   activityTitle: "The Dramaturgy of Creative Coding: Storytelling at the
     Intersection of Art and Technology"

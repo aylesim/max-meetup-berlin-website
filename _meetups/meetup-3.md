@@ -3,6 +3,7 @@ is_next: true
 title: Meetup *3
 subtitle: "Complex Systems: shaping dramaturgies in oceans of samples and clouds
   of sound"
+event_link: https://www.eventbrite.com/e/max-berlin-network-meetup-tickets-1324873746039?aff=ebdsshcopyurl&utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=
 when_where: |
   Saturday, May the 3th 2025 
   Betahaus, Lobeckstraße 30, 10969 Berlin

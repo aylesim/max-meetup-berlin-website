@@ -1,5 +1,5 @@
 ---
-is_next: true
+is_next: false
 title: Meetup *3
 subtitle: "Complex Systems: shaping dramaturgies in oceans of samples and clouds
   of sound"

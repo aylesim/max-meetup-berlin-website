@@ -30,6 +30,16 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
     {}
   );
 
+  const hasSpeakers = () => {
+    return [0, 1, 2, 3, 4, 5, 6].some((index) => {
+      const speakerIndex = index as SpeakerIndex;
+      const speakerKey = `Speaker_${speakerIndex}` as const;
+      const speakerNameKey = `name_${speakerIndex}` as const;
+      const speaker = data[speakerKey];
+      return speaker && speaker[speakerNameKey];
+    });
+  };
+
   const scrollToSpeaker = (index: number) => {
     if (speakerRefs.current[index]) {
       speakerRefs.current[index]?.scrollIntoView({
@@ -75,41 +85,43 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         </div>
 
         {/* Featured Speakers List */}
-        <motion.div
-          className="mb-8 border-r-4 border-black dark:border-white pr-3 transform -rotate-1"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <h2 className="text-2xl font-bold mb-2 uppercase tracking-tight">
-            Featuring
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {[0, 1, 2, 3, 4, 5, 6].map((index) => {
-              const speakerIndex = index as SpeakerIndex;
-              const speakerKey = `Speaker_${speakerIndex}` as const;
-              const speakerNameKey = `name_${speakerIndex}` as const;
-              const activityTitleKey = "activityTitle" as const;
-              const speaker = data[speakerKey];
-              if (!speaker || !speaker[speakerNameKey]) return null;
+        {hasSpeakers() && (
+          <motion.div
+            className="mb-8 border-r-4 border-black dark:border-white pr-3 transform -rotate-1"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-2xl font-bold mb-2 uppercase tracking-tight">
+              Featuring
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {[0, 1, 2, 3, 4, 5, 6].map((index) => {
+                const speakerIndex = index as SpeakerIndex;
+                const speakerKey = `Speaker_${speakerIndex}` as const;
+                const speakerNameKey = `name_${speakerIndex}` as const;
+                const activityTitleKey = "activityTitle" as const;
+                const speaker = data[speakerKey];
+                if (!speaker || !speaker[speakerNameKey]) return null;
 
-              return (
-                <span
-                  key={index}
-                  className="inline-block bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-sm font-mono transform hover:rotate-1 transition-transform cursor-pointer"
-                  onClick={() => scrollToSpeaker(index)}
-                >
-                  {speaker[speakerNameKey]}
-                  {speaker[activityTitleKey] && (
-                    <span className="ml-1 text-gray-300 dark:text-gray-500">
-                      — {speaker[activityTitleKey]}
-                    </span>
-                  )}
-                </span>
-              );
-            })}
-          </div>
-        </motion.div>
+                return (
+                  <span
+                    key={index}
+                    className="inline-block bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-sm font-mono transform hover:rotate-1 transition-transform cursor-pointer"
+                    onClick={() => scrollToSpeaker(index)}
+                  >
+                    {speaker[speakerNameKey]}
+                    {speaker[activityTitleKey] && (
+                      <span className="ml-1 text-gray-300 dark:text-gray-500">
+                        — {speaker[activityTitleKey]}
+                      </span>
+                    )}
+                  </span>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
 
         {/* Time and Location + Schedule Section */}
         <div className="flex flex-col gap-4">
@@ -205,112 +217,114 @@ export default function MeetingInfo({ data }: { data: MeetingData }) {
         </motion.div>
 
         {/* People Section */}
-        <motion.div
-          className="mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
-          <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
-            Featured Speakers
-          </h2>
-          <div className="grid grid-cols-1 gap-6">
-            {[0, 1, 2, 3, 4, 5, 6].map((index) => {
-              const speakerIndex = index as SpeakerIndex;
-              const speakerKey = `Speaker_${speakerIndex}` as const;
-              const speakerNameKey = `name_${speakerIndex}` as const;
-              const pictureKey = `picture_${speakerIndex}` as const;
-              const bioKey = `bio_${speakerIndex}` as const;
-              const link1Key = `link1_${speakerIndex}` as const;
-              const link2Key = `link2_${speakerIndex}` as const;
-              const shortdescriptionKey = "shortdescription" as const;
-              const activityTitleKey = "activityTitle" as const;
-              const speaker = data[speakerKey];
-              if (!speaker || !speaker[speakerNameKey]) return null;
+        {hasSpeakers() && (
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-8 uppercase tracking-tight text-center">
+              Featured Speakers
+            </h2>
+            <div className="grid grid-cols-1 gap-6">
+              {[0, 1, 2, 3, 4, 5, 6].map((index) => {
+                const speakerIndex = index as SpeakerIndex;
+                const speakerKey = `Speaker_${speakerIndex}` as const;
+                const speakerNameKey = `name_${speakerIndex}` as const;
+                const pictureKey = `picture_${speakerIndex}` as const;
+                const bioKey = `bio_${speakerIndex}` as const;
+                const link1Key = `link1_${speakerIndex}` as const;
+                const link2Key = `link2_${speakerIndex}` as const;
+                const shortdescriptionKey = "shortdescription" as const;
+                const activityTitleKey = "activityTitle" as const;
+                const speaker = data[speakerKey];
+                if (!speaker || !speaker[speakerNameKey]) return null;
 
-              return (
-                <motion.div
-                  key={index}
-                  ref={(el) => {
-                    speakerRefs.current[index] = el;
-                  }}
-                  className="border-4 border-black dark:border-white p-4 transition-all"
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                    rotate: index % 2 === 0 ? 0.5 : -0.5,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    rotate: index % 2 === 0 ? 0.5 : -0.5,
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
-                >
-                  <div className="flex gap-4">
-                    {/* Left side - Image */}
-                    <div className="w-1/3 flex-shrink-0">
-                      <div className="aspect-square overflow-hidden border-2 border-black dark:border-white">
-                        <Image
-                          src={speaker[pictureKey] ?? ""}
-                          alt={speaker[speakerNameKey] ?? ""}
-                          width={150}
-                          height={150}
-                          className="w-full h-full object-cover"
-                        />
+                return (
+                  <motion.div
+                    key={index}
+                    ref={(el) => {
+                      speakerRefs.current[index] = el;
+                    }}
+                    className="border-4 border-black dark:border-white p-4 transition-all"
+                    initial={{
+                      opacity: 0,
+                      y: 20,
+                      rotate: index % 2 === 0 ? 0.5 : -0.5,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      rotate: index % 2 === 0 ? 0.5 : -0.5,
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ delay: 0.2 + index * 0.1 }}
+                  >
+                    <div className="flex gap-4">
+                      {/* Left side - Image */}
+                      <div className="w-1/3 flex-shrink-0">
+                        <div className="aspect-square overflow-hidden border-2 border-black dark:border-white">
+                          <Image
+                            src={speaker[pictureKey] ?? ""}
+                            alt={speaker[speakerNameKey] ?? ""}
+                            width={150}
+                            height={150}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Right side - Content */}
+                      <div className="flex-1 flex flex-col">
+                        <h3 className="font-mono text-xl font-bold">
+                          {speaker[speakerNameKey]}
+                        </h3>
+
+                        {speaker[activityTitleKey] && (
+                          <p className="text-base font-mono font-bold">
+                            {speaker[activityTitleKey]}
+                          </p>
+                        )}
+
+                        {speaker[shortdescriptionKey] && (
+                          <p className="text-sm font-mono mt-1">
+                            {speaker[shortdescriptionKey]}
+                          </p>
+                        )}
+
+                        <p className="text-xs font-mono mt-1 mb-2 text-gray-700 dark:text-gray-300">
+                          {speaker[bioKey]}
+                        </p>
+
+                        <div className="flex gap-2 mt-auto">
+                          {speaker[link1Key] && (
+                            <Link
+                              href={speaker[link1Key] as string}
+                              target="_blank"
+                              className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                            >
+                              Website
+                            </Link>
+                          )}
+                          {speaker[link2Key] && (
+                            <Link
+                              href={speaker[link2Key] as string}
+                              target="_blank"
+                              className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                            >
+                              Link 2
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Right side - Content */}
-                    <div className="flex-1 flex flex-col">
-                      <h3 className="font-mono text-xl font-bold">
-                        {speaker[speakerNameKey]}
-                      </h3>
-
-                      {speaker[activityTitleKey] && (
-                        <p className="text-base font-mono font-bold">
-                          {speaker[activityTitleKey]}
-                        </p>
-                      )}
-
-                      {speaker[shortdescriptionKey] && (
-                        <p className="text-sm font-mono mt-1">
-                          {speaker[shortdescriptionKey]}
-                        </p>
-                      )}
-
-                      <p className="text-xs font-mono mt-1 mb-2 text-gray-700 dark:text-gray-300">
-                        {speaker[bioKey]}
-                      </p>
-
-                      <div className="flex gap-2 mt-auto">
-                        {speaker[link1Key] && (
-                          <Link
-                            href={speaker[link1Key] as string}
-                            target="_blank"
-                            className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
-                          >
-                            Website
-                          </Link>
-                        )}
-                        {speaker[link2Key] && (
-                          <Link
-                            href={speaker[link2Key] as string}
-                            target="_blank"
-                            className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 font-mono text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
-                          >
-                            Link 2
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
       </motion.div>
     </section>
   );

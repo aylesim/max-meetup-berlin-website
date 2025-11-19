@@ -33,10 +33,6 @@ Stay updated on upcoming meetups, open calls, and more: [Max Berlin Meetup](http
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is private and proprietary.
-
 ---
 
 Made with ❤️ from Berlin

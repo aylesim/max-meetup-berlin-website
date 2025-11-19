@@ -8,8 +8,8 @@ export default async function Index() {
   // Prepare data for hero component
   const data = {
     ...homeData,
-    // If we have a next meetup, extract and format the when_where info
-    nextMeetupData: nextMeetup
+    // If we have a next meetup with is_next flag, extract and format the when_where info
+    nextMeetupData: nextMeetup && nextMeetup.is_next
       ? {
           title: nextMeetup.title,
           when_where: nextMeetup.when_where,

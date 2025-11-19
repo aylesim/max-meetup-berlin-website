@@ -60,14 +60,23 @@ export default function Hero({ data }: { data: any }) {
     };
   }, []);
 
-  // Use the nextMeetupData if available, otherwise fall back to the data.next_meetup
+  // Use only nextMeetupData (from meetup with is_next: true), don't fallback to _home.yml
   const nextMeetupInfo = data.nextMeetupData
     ? data.nextMeetupData.when_where
-    : data.next_meetup;
+    : null;
 
   // Forza il processo dei line break
   const nextMeetupLines =
     nextMeetupInfo?.split(/\r?\n/).filter((line: string) => line.trim()) || [];
+
+  const hasNextMeetup = data.nextMeetupData !== null && nextMeetupLines.length > 0;
+
+  // Get TBA message from CMS or use default
+  const tbaMessageLines =
+    data.no_next_meetup_message?.split(/\r?\n/).filter((line: string) => line.trim()) || [
+      "Stay tuned!",
+      "More info coming soon...",
+    ];
 
   // Use the dynamic slug if available
   const meetingUrl = data.nextMeetupData
@@ -99,25 +108,40 @@ export default function Hero({ data }: { data: any }) {
               {data.next_meetup_0}
             </div>
             <div className="font-mono mb-6 space-y-1">
-              {nextMeetupLines.map((line: string, index: number) => (
-                <div key={index} className="text-base">
-                  {line.trim()}
+              {hasNextMeetup ? (
+                nextMeetupLines.map((line: string, index: number) => (
+                  <div key={index} className="text-base">
+                    {line.trim()}
+                  </div>
+                ))
+              ) : (
+                <div className="text-base space-y-1">
+                  {tbaMessageLines.map((line: string, index: number) => (
+                    <div
+                      key={index}
+                      className={index === 0 ? "text-base" : "text-sm opacity-70"}
+                    >
+                      {line.trim()}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
             <div className="relative">
-              {data.isFlashy &&
+              {hasNextMeetup && data.isFlashy &&
                 arrows.map((arrow, i) => (
                   <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
                 ))}
-              <Link href={meetingUrl}>
-                <Button
-                  size="lg"
-                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0"
-                >
-                  More info
-                </Button>
-              </Link>
+              {hasNextMeetup && (
+                <Link href={meetingUrl}>
+                  <Button
+                    size="lg"
+                    className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-[-5deg] transition-transform hover:rotate-0"
+                  >
+                    More info
+                  </Button>
+                </Link>
+              )}
             </div>
           </motion.div>
 
@@ -129,18 +153,24 @@ export default function Hero({ data }: { data: any }) {
               <p className="text-base md:text-base mb-4 font-mono">
                 {data.description}
               </p>
-              <Button
-                size="lg"
-                className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0"
-                onClick={() => {
-                  window.open(
-                    "https://e3a5acc8d26511efb40edbb296134c3a.eo.page/ymjkn",
-                    "_blank"
-                  );
-                }}
-              >
-                {data.mail_button}
-              </Button>
+              <div className="relative inline-block">
+                {!hasNextMeetup && data.isFlashy &&
+                  arrows.map((arrow, i) => (
+                    <Arrow key={i} angle={arrow.angle} delay={arrow.delay} />
+                  ))}
+                <Button
+                  size="lg"
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-none transform -rotate-3 transition-transform mb-4 hover:rotate-0"
+                  onClick={() => {
+                    window.open(
+                      "https://e3a5acc8d26511efb40edbb296134c3a.eo.page/ymjkn",
+                      "_blank"
+                    );
+                  }}
+                >
+                  {data.mail_button}
+                </Button>
+              </div>
             </div>
 
             <div className="flex justify-end mt-4 space-x-4">

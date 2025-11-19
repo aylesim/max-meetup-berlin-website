@@ -11,5 +11,7 @@ next_meetup: |-
   10969 Berlin
 
   3:00 PM - 7:00 PM
+no_next_meetup_message: |-
+  We're taking a short break, but don't worry: we'll be back with new events in early 2026!
 isFlashy: true
 mail_button: Get Notified!

@@ -20,6 +20,11 @@ export default async function Index() {
 
   return (
     <main className="w-full h-full">
+      <div className="w-full border-b-4 border-black dark:border-white bg-white dark:bg-black py-4 px-6 text-center">
+        <span className="font-mono text-base md:text-lg text-black dark:text-white">
+          The next meetup is postponed to March 14.
+        </span>
+      </div>
       <Hero data={data} />
     </main>
   );
